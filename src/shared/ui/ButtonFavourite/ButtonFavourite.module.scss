@@ -1,0 +1,15 @@
+.favourite {
+  display: flex;
+  flex-direction: row;
+  inline-size: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favouriteIcon {
+  transition: fill 0.3s ease-in-out;
+}
+
+.favouriteIcon:hover {
+  fill: var(--widgets-color);
+}

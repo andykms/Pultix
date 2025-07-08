@@ -1,0 +1,17 @@
+.dropdownOption {
+  block-size: 100%;
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdownIconContainer {
+  block-size: 25px;
+  inline-size: 25px;
+  background-color: var(--main-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.05s ease-in-out;
+}

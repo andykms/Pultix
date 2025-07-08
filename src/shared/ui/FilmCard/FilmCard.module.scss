@@ -1,0 +1,35 @@
+.filmCard {
+  block-size: 180px;
+  inline-size: 300px;
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.imageContainer {
+  block-size: 130px;
+  inline-size: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.imageContainer:hover {
+  opacity: 0.67;
+}
+
+.imageContainer img {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.filmCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filmCardAbout {
+  display: flex;
+  justify-content: space-between;
+}
+
