@@ -1,7 +1,7 @@
 type TParameter = {
   isChoosen: boolean;
   value: string;
-  id: number;
+  id: string;
 }
 
 export interface DropdownParamProps {

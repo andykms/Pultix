@@ -3,4 +3,7 @@ export interface ButtonProps {
   width: string;
   children: React.ReactNode;
   onClick?: () => void;
+  style?: React.CSSProperties;
+  disabled?: boolean;
 }
+

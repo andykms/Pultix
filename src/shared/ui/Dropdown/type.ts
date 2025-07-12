@@ -1,6 +1,6 @@
 export type TParameter = {
   value: string;
-  id: number;
+  id: string;
   isChoosen: boolean;
 };
 

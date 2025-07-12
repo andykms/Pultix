@@ -24,7 +24,7 @@ export const NotChoosen: Story = {
   args: {
     parameter: {
       value: "Боевик",
-      id: 1,
+      id: '1',
       isChoosen: false,
     },
     onChoose: () => {},
@@ -40,7 +40,7 @@ export const Choosen: Story = {
   args: {
     parameter: {
       value: "Фантастика",
-      id: 1,
+      id: '1',
       isChoosen: true,
     },
     onChoose: () => {},
@@ -66,7 +66,7 @@ export const WithState: Story = {
   args: {
     parameter: {
       value: "Фантастика",
-      id: 1,
+      id: '1',
       isChoosen: true,
     },
     onChoose: () => {},

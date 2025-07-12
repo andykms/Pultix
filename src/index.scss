@@ -9,7 +9,18 @@
   --primary-color: rgb(180, 40, 40);
   --primary-color-hover: rgb(215, 50, 50);
   --widgets-color-hover: rgb(26, 26, 26);
-}
+  --widgets-color-button: rgb(26, 26, 26);
+  --no-image-film-background: linear-gradient(130deg, #ff7f23, #810505);
+  --mega-font-size: clamp(3rem, 2.472rem + 2.254vw, 4.5rem);
+  --big-font-size: clamp(1.75rem, 1.31rem + 1.878vw, 3rem);
+  --medium-font-size: clamp(1.375rem, 1.243rem + 0.563vw, 1.75rem);
+  --normal-font-size: clamp(1.375rem, 1.243rem + 0.563vw, 1.75rem);
+  --mini-font-size: clamp(0.75rem, 0.286rem + 1.98vw, 1.125rem);
+  --button-height: 50px;
+  --modal-padding: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
+  --text-dropdown-height: clamp(18.75rem, 14.349rem + 18.779vw, 31.25rem);
+  --text-dropdown-height-min: clamp(3.125rem, 2.025rem + 4.695vw, 6.25rem);
+} 
 
 
 html,
@@ -156,12 +167,12 @@ body {
 }
 
 .big-title {
-  font-size: 48px;
+  font-size: var(--big-font-size);
   color: var(--main-text-color);
 }
 
 .title {
-  font-size: 24px;
+  font-size: var(--medium-font-size);
   color: var(--main-text-color);
   transition: color 0.3s ease-in-out;
   text-decoration: none;
@@ -172,12 +183,12 @@ body {
 }
 
 .description {
-  font-size: 18px;
+  font-size: var(--mini-font-size);
   color: var(--description-text-color);
 }
 
 .text, .textHovered {
-  font-size: 16px;
+  font-size: var(--mini-font-size);
   color: var(--main-text-color);
 }
 
@@ -186,6 +197,14 @@ body {
 }
 
 .buttonTitle {
-  font-size: 24px;
+  font-size: var(--medium-font-size);
+  text-decoration: none;
+  text-decoration-line: none;
   color: var(--main-text-color);
 }
+
+.mega-title {
+  font-size: var(--mega-font-size);
+  color: var(--main-text-color);
+}
+

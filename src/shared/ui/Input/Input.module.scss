@@ -1,0 +1,29 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  padding: 15px;
+  background-color: var(--widgets-color-hover);
+  block-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  color: var(--main-text-color);
+  font-size: 18px;
+  background-color: inherit;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.input::placeholder {
+  color: var(--description-text-color);
+  font-size: 18px;
+}

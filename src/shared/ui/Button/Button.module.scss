@@ -1,5 +1,5 @@
 .button {
-  block-size: 50px;
+  block-size: var(--button-height);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,11 @@
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5
 }
 
 .primary {

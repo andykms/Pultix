@@ -12,7 +12,7 @@
 .modal {
   min-inline-size: 35vw;
   min-block-size: 25vh;
-  padding: 50px;
+  padding: var(--modal-padding);
   position: fixed;
   top: 50%;
   left: 50%;

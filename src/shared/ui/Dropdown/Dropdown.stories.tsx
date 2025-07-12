@@ -37,37 +37,37 @@ export const Base: Story = {
     params: [
       {
         value: "Фантастика",
-        id: 1,
+        id: '1',
         isChoosen: false,
       },
       {
         value: "Боевик",
-        id: 2,
+        id: '2',
         isChoosen: false,
       },
       {
         value: "Триллер",
-        id: 3,
+        id: '3',
         isChoosen: false,
       },
       {
         value: "Мультфильм",
-        id: 4,
+        id: '4',
         isChoosen: false,
       },
       {
         value: "Детектив",
-        id: 5,
+        id: '5',
         isChoosen: false,
       },
       {
         value: "Драма",
-        id: 6,
+        id: '6',
         isChoosen: false,
       },
       {
         value: "Семейный",
-        id: 7,
+        id: '7',
         isChoosen: false,
       },
     ],
@@ -84,7 +84,7 @@ export const Scrollable: Story = {
     const years: TParameter[] = []
     for(var i=startYear;i<=currentYear;i++){
       years.push({
-        id: i,
+        id: i.toString(),
         value: i.toString(),
         isChoosen: false,
       });
@@ -109,37 +109,37 @@ export const Scrollable: Story = {
     params: [
       {
         value: "Фантастика",
-        id: 1,
+        id: '1',
         isChoosen: false,
       },
       {
         value: "Боевик",
-        id: 2,
+        id: '2',
         isChoosen: false,
       },
       {
         value: "Триллер",
-        id: 3,
+        id: '3',
         isChoosen: false,
       },
       {
         value: "Мультфильм",
-        id: 4,
+        id: '4',
         isChoosen: false,
       },
       {
         value: "Детектив",
-        id: 5,
+        id: '5',
         isChoosen: false,
       },
       {
         value: "Драма",
-        id: 6,
+        id: '6',
         isChoosen: false,
       },
       {
         value: "Семейный",
-        id: 7,
+        id: '7',
         isChoosen: false,
       },
     ],

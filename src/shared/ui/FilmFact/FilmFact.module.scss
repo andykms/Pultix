@@ -1,0 +1,14 @@
+.fact {
+  inline-size: 100%;
+  min-block-size: 100px;
+  background-color: var(--widgets-color);
+  padding: 15px;
+  transition: background-color 1s ease-in-out;
+}
+
+.spoiler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--widgets-color-hover);
+}

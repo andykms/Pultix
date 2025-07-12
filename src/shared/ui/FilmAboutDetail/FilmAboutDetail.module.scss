@@ -1,0 +1,32 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  inline-size: 80%;
+  align-self: center;
+}
+
+.filmAbout {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filmInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 250px));
+  gap: 20px;
+  justify-content: center;
+}
+
+.titleContainer {
+  align-self: center;
+  padding: 50px 0;
+}
+
+.raitingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  inline-size: 100px;
+}

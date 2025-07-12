@@ -1,0 +1,39 @@
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+}
+
+.galleryHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.gallery {
+  display: grid;
+  justify-content: space-between;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 300px));
+  inline-size: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .galleryHeader {
+    flex-direction: column;
+    gap: 10px;
+    padding-block-end: 10px;
+  }
+}
+
+@media (max-width: 678px) {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

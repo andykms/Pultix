@@ -1,0 +1,33 @@
+.tabsContainer {
+  inline-size: 100%;
+}
+
+.tabHeader {
+  display: flex;
+  padding-block-end: 20px;
+}
+
+.tab {
+  display: flex;
+  inline-size: 100%;
+  flex-direction: column;
+}
+
+.activeLine {
+  display: block;
+  inline-size: 100%;
+  block-size: 2px;
+  background-color: var(--primary-color);
+  animation: 0.3s ease-in-out line;
+}
+
+@keyframes line {
+  from {
+    inline-size: 0;
+  }
+
+  to {
+    inline-size: 100%;
+  }
+}
+

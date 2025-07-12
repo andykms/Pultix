@@ -27,7 +27,6 @@ export const Base: Story = {
       "https://avatars.mds.yandex.net/i?id=2cb1caa2ac15a7a77a34a32da79697a8_l-5335726-images-thumbs&n=13",
     _id: "13132",
     raiting: 8.5,
-    maxRaiting: 10,
     year: 2013,
   },
 };

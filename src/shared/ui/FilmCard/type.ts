@@ -2,7 +2,8 @@ export interface FilmCardProps {
   _id: string;
   posterUrl?: string;
   title: string;
-  raiting: number;
-  maxRaiting: number;
-  year: number;
+  raiting?: number;
+  year?: number;
+  isArticle?: boolean;
+  width?: string;
 }

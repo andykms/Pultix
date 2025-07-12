@@ -1,0 +1,16 @@
+.cardContainer {
+  block-size: 300px;
+  inline-size: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.photo {
+  align-self: center;
+  inline-size: 200px;
+  block-size: auto;
+  max-block-size: 200px;
+}
+

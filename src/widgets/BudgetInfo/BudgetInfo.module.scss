@@ -1,0 +1,35 @@
+.rental {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  inline-size:clamp(18.75rem, 3.345rem + 65.728vw, 62.5rem);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fees {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  inline-size: 100%;
+}
+
+.fee {
+  background-color: var(--widgets-color);
+  flex-shrink: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .rental {
+    flex-direction: column;
+  }
+}

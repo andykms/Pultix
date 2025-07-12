@@ -1,0 +1,47 @@
+.aboutContainer {
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.genre::before {
+  content: '';
+  z-index: 99;
+  inset-block-start: 2px;
+  width: 1px;
+  height: 1px;
+  background-color: var(--main-text-color);
+}
+
+.genresContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.filmAbout {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media (max-width: 876px) {
+  .filmAbout {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+}
