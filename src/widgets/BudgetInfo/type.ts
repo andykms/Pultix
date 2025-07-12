@@ -11,7 +11,7 @@ export type TBudget = {
 
 export interface BudgetInfoProps {
   fees: TFees[];
-  budget: TBudget;
+  budget?: TBudget;
   premierWorld?: string;
   premierRussia?: string;
 }

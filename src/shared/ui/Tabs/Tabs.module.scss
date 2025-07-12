@@ -1,10 +1,17 @@
 .tabsContainer {
   inline-size: 100%;
+  z-index: 10;
+  position:sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .tabHeader {
-  display: flex;
-  padding-block-end: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 150px));
+  justify-content: center;
+  align-content: center;
+  padding-block-start: 5px;
 }
 
 .tab {
@@ -16,7 +23,7 @@
 .activeLine {
   display: block;
   inline-size: 100%;
-  block-size: 2px;
+  block-size: 5px;
   background-color: var(--primary-color);
   animation: 0.3s ease-in-out line;
 }
@@ -31,3 +38,10 @@
   }
 }
 
+.tabContent {
+  background-color: var(--main-background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block-start: 20px;
+}

@@ -1,10 +1,11 @@
 export type TTab = {
   id: string;
   title: string;
-  component: React.ReactNode;
 }
 
 export interface TabsProps {
   tabs: TTab[];
-  initialActiveId: string;
+  activeId: string;
+  portalId?: string;
+  onClick: (id: string) => void;
 }

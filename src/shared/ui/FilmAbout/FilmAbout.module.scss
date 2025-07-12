@@ -28,8 +28,9 @@
 
 .filmAbout {
   display: flex;
-  gap: 40px;
-  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
 }
 
 .descriptionContainer {

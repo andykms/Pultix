@@ -14,7 +14,7 @@
 .gallery {
   display: grid;
   justify-content: space-between;
-  grid-gap: 20px;
+  row-gap: 50px;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 300px));
   inline-size: 100%;
   overflow: hidden;

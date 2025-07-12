@@ -1,0 +1,86 @@
+.filmPage {
+  position: relative;
+}
+
+.film {
+  inline-size: 100%;
+  block-size: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--primary-color-background-page);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  background-size: contain;
+  z-index: 0;
+}
+
+.filmAboutContainer {
+  padding: var(--modal-padding);
+  z-index: 10;
+}
+
+.titleContainer {
+  z-index: 1;
+}
+
+.buttonsNavigation {
+  padding: calc(var(--modal-padding) + 50px) var(--modal-padding);
+  justify-self: flex-end;
+  margin-top: auto;
+  display: flex;
+  gap: 20px;
+  z-index: 1;
+}
+
+.buttonCloseContainer {
+  position: fixed;
+  inline-size: auto;
+  block-size: auto;
+  inset-block-start: var(--modal-padding);
+  inset-inline-end: var(--modal-padding);
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.noImage {
+  background: var(--no-image-film-background);
+}
+
+.currentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding: var(--modal-padding);
+  background-color: var(--film-content-bbackground);
+}
+
+.oneBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.film::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(rgba(0, 0, 0, 0.3));
+    z-index: 0;
+}
+
+@media (max-width: 876px) {
+  .buttonsNavigation {
+    flex-direction: column;
+    inline-size: 250px;
+  }
+}
+.blockTabs {
+  position: absolute;
+  inset-block-start: 750px;
+}

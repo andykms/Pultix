@@ -14,6 +14,6 @@ type TFilm = {
 
 export interface FilmModalProps {
   film: TFilm
-  onChangeInFavourites: (film?: TFilm)=>void;
+  onChangeInFavourites: (id?: string)=>void;
   isInFavourites: boolean;
 }

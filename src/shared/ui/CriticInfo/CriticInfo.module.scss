@@ -6,9 +6,10 @@
 
 .value {
   block-size: 30px;
-  inline-size: 50px;
+  inline-size: auto;
   background-color: var(--widgets-color);
   display: block;
+  padding: 3px;
   text-align: center;
   line-height: 30px;
   font-weight: 800;

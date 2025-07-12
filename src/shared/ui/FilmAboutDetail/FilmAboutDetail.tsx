@@ -3,8 +3,9 @@ import type { FilmAboutDetailProps } from "./type";
 import { BlockInfo } from "../BlockInfo/BlockInfo";
 import { CriticInfo } from "../CriticInfo/CriticInfo";
 import { FilmFact } from "../FilmFact/FilmFact";
+import { forwardRef } from "react";
 
-export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = ({
+export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = forwardRef(({
   _id,
   title,
   raiting,
@@ -14,13 +15,13 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = ({
   movieLength,
   ageRaiting,
   countries,
-}: FilmAboutDetailProps) => {
+}: FilmAboutDetailProps, ref?: React.ForwardedRef<HTMLDivElement>) => {
   const hours = Math.floor(movieLength / 60);
   const minutes = movieLength % 60;
   const movieLengthString = `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин`;
 
   return (
-    <section className={styles.filmAbout}>
+    <section className={styles.filmAbout} ref={ref}>
       <div className={styles.titleContainer}>
         <span className={"big-title"}>{title}</span>
       </div>
@@ -61,7 +62,7 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = ({
       ></BlockInfo>
       {ageRaiting && (
         <BlockInfo
-          title="Ограничение по возрасту"
+          title="Ограничение"
           blocks={[{ title: ageRaiting.toString() + '+'}]}
         ></BlockInfo>
       )}
@@ -74,4 +75,4 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = ({
       )}
     </section>
   );
-};
+});
