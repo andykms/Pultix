@@ -354,7 +354,7 @@ export const Base: Story = {
           title: "Спеши любить",
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1629390/5e353568-a599-47f8-a26b-a9e0e0e70274/orig",
-          raiting: 7.915,
+          rating: 7.915,
           year: 2002,
         },
         {
@@ -362,7 +362,7 @@ export const Base: Story = {
           title: "Дневник памяти",
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1898899/c48824e7-89fc-4d6f-a55a-57a8fa05d38c/orig",
-          raiting: 8.252,
+          rating: 8.252,
           year: 2004,
         },
         {
@@ -370,7 +370,7 @@ export const Base: Story = {
           title: "Сладкий ноябрь",
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/4716873/5f2efb41-3fe7-49e6-8833-993addbbb028/orig",
-          raiting: 7.738,
+          rating: 7.738,
           year: 2001,
         },
         {
@@ -379,7 +379,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1900788/988016a7-7fbb-4aa0-badb-6f3bee02dc68/orig",
 
-          raiting: 7.635,
+          rating: 7.635,
           year: 2010,
         },
         {
@@ -388,7 +388,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/4483445/2ba0977b-4ea2-4a4d-b197-e2446ab83744/orig",
 
-          raiting: 7.606,
+          rating: 7.606,
           year: 2003,
         },
         {
@@ -397,7 +397,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1704946/ad874c23-a328-4668-8f44-a28ffafbe299/orig",
 
-          raiting: 6.871,
+          rating: 6.871,
           year: 2010,
         },
         {
@@ -406,7 +406,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1704946/3a50170f-17a3-4a8b-a060-73820215137a/orig",
 
-          raiting: 7.525,
+          rating: 7.525,
           year: 2012,
         },
         {
@@ -415,7 +415,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1773646/ebd2268f-f0cc-4de5-95aa-1c1013597aa5/orig",
 
-          raiting: 7.81,
+          rating: 7.81,
           year: 2014,
         },
         {
@@ -424,7 +424,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1773646/f7ac553b-8ea2-4673-8dde-ea1994f67d04/orig",
 
-          raiting: 7.707,
+          rating: 7.707,
           year: 2009,
         },
         {
@@ -433,7 +433,7 @@ export const Base: Story = {
           posterUrl:
             "https://image.openmoviedb.com/kinopoisk-images/1898899/28483477-666e-4233-b4ac-460e13053c02/orig",
 
-          raiting: 7.336,
+          rating: 7.336,
           year: 2000,
         },
       ],

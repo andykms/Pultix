@@ -16,9 +16,9 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = forwardRef(({
   ageRaiting,
   countries,
 }: FilmAboutDetailProps, ref?: React.ForwardedRef<HTMLDivElement>) => {
-  const hours = Math.floor(movieLength / 60);
-  const minutes = movieLength % 60;
-  const movieLengthString = `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин`;
+  const hours = movieLength? Math.floor(movieLength / 60): undefined;
+  const minutes =movieLength? movieLength % 60:undefined;
+  const movieLengthString = hours&&hours ? `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин`: undefined;
 
   return (
     <section className={styles.filmAbout} ref={ref}>
@@ -56,10 +56,10 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = forwardRef(({
           })}
         />
       )}
-      <BlockInfo
+      {movieLengthString && <BlockInfo
         title="Длительность"
         blocks={[{ title: movieLengthString }]}
-      ></BlockInfo>
+      ></BlockInfo>}
       {ageRaiting && (
         <BlockInfo
           title="Ограничение"

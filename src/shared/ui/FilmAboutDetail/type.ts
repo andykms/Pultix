@@ -5,7 +5,7 @@ export interface FilmAboutDetailProps {
   description?: string;
   year?: number;
   genres?: string[];
-  movieLength: number;
+  movieLength?: number;
   ageRaiting?: number;
   countries?: string[];
 }

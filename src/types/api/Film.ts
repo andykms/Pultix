@@ -24,6 +24,14 @@ export type TGenreApi = {
   name: string;
 }
 
+export type TTrailer = {
+  url: string;
+}
+
+export type TVideos = {
+  trailers: TTrailer[];
+}
+
 export type TCountryApi = {
   name: string;
 }
@@ -48,13 +56,18 @@ export type TSimilarMovieApi = {
   poster: {
     url: string|null;
   }
-  raiting: TRatingApi;
+  rating: TRatingApi;
   year: number;
 }
 
 export type TReleaseYearsApi = {
   start: number;
   end: number;
+}
+
+export type TFees = {
+  world?: TBudgetApi,
+  russia?: TBudgetApi,
 }
 
 export interface TFilmApi {
@@ -75,6 +88,8 @@ export interface TFilmApi {
   movieLength: number|null;
   ageRaiting: number|null;
   releaseYears: TReleaseYearsApi[]|null;
+  fees?: TFees,
+  videos?: TVideos;
 }
 
 export interface TFilmApiLimitReposponse {

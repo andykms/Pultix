@@ -16,9 +16,10 @@ export const FilmAbout: React.FC<FilmAboutProps> = (props: FilmAboutProps) => {
     countries,
   } = props;
 
-  const hours = Math.floor(movieLength / 60);
-  const minutes = movieLength % 60;
-  const movieLengthString = `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин`;
+  
+  const hours =  movieLength ? Math.floor(movieLength / 60) : undefined;
+  const minutes = movieLength ? movieLength % 60 : undefined;
+  const movieLengthString = hours && minutes ? `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин` : undefined;
 
   return (
     <div className={styles.aboutContainer}>
@@ -55,7 +56,7 @@ export const FilmAbout: React.FC<FilmAboutProps> = (props: FilmAboutProps) => {
             </div>
           )}
           {ageRaiting && <span className="description">{ageRaiting}+</span>}
-          <span className="description">{movieLengthString}</span>
+          {movieLengthString && <span className="description">{movieLengthString}</span>}
         </div>
       </div>
       {description && (

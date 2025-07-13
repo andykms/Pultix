@@ -1,6 +1,6 @@
 export type TActor = {
   _id: string|number;
-  photoUrl: string;
+  photoUrl?: string;
   name: string|null;
   description: string|null;
 }
@@ -22,7 +22,7 @@ export type TBudget = {
 }
 
 export type FilmDistribution = {
-  fees?: TFees[];
+  fees: TFees[];
   budget?: TBudget;
   premierWorld?: string;
   premierRussia?: string;
@@ -32,7 +32,7 @@ export type TNeighbourFilm = {
   _id: string,
   posterUrl?: string,
   title: string,
-  raiting?: number,
+  rating?: number,
   year?: number,
 }
 
@@ -49,7 +49,7 @@ export type TFilm = {
   facts?: TFact[],
   filmDistribution?: FilmDistribution;
   trailerUrl?: string;
-  movieLength: number;
+  movieLength?: number;
   similarMovies?: TNeighbourFilm[],
   ageRaiting?: number;
 }
