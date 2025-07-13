@@ -17,7 +17,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.imageContainer img{
+.imageContainer img {
   align-self: center;
   block-size: 100%;
   inline-size: auto;
@@ -56,6 +56,15 @@
   inline-size: 100%;
 }
 
+.titleContainer {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.titleContainer a {
+  color: var(--main-text-color);
+}
 
 @media (max-width: 678px) {
   .filmCard {

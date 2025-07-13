@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { MemoryRouter } from "react-router-dom";
 
-import { FilmPage } from "./Film";
+import { FilmPage } from "./FilmPage";
 import { useState } from "react";
 
 

@@ -5,7 +5,7 @@ type TInput = TParameter & {
   placeholder: string;
 }
 
-type TInputs = TInput[]
+export type TInputs = TInput[]
 
 type TNumberInput = {
   valueMax: string;
@@ -21,7 +21,7 @@ type TNumberInput = {
   id: string;
 }
 
-type TNumberInputs = TNumberInput[];
+export type TNumberInputs = TNumberInput[];
 
 type TDropdown = {
   title: string;
@@ -29,9 +29,9 @@ type TDropdown = {
   id: string;
 }
 
-type TDropdowns = TDropdown[]
+export type TDropdowns = TDropdown[]
 
-type TDropdownsWithScroll = TDropdown[]
+export type TDropdownsWithScroll = TDropdown[]
 
 export interface FilterProps {
   width: string;

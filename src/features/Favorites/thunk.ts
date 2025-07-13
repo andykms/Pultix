@@ -35,10 +35,31 @@ export const getFavouriteFilmByIdThunk = createAsyncThunk(
 
 export const getFavouritesFilmsThunk = createAsyncThunk(
   "film/getFilms",
-  async (ids: string[]) => {
+  async (data: {favorites: {id: string}[], allFavouritesIds: string[]}) => {
     const result: TFilmApi[] = [];
-    for (const id of ids) {
+
+    const allFavoritesIdsHashed: Set<string> = new Set();
+
+    data.allFavouritesIds.forEach((id: string)=>{
+      allFavoritesIdsHashed.add(id);
+    });
+
+    data.favorites.forEach((item)=>{
+      if(allFavoritesIdsHashed.has(item.id)) {
+        allFavoritesIdsHashed.delete(item.id);
+      }
+    });
+
+    const requiredToAddFavorites = Array.from(allFavoritesIdsHashed);
+
+    let index = 0;
+
+    for (const id of requiredToAddFavorites) {
       getFilmById(id).then(film => result.push(film));
+      index +=1;
+      if(index >= 50) {
+        break;
+      }
     }
     return result;
   }

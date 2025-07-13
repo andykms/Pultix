@@ -31,7 +31,7 @@ export const NumberInput = (props: NumberInputProps) => {
           }
           title={""}
           placeholder={placeholderMin || ""}
-          width="100px"
+          width="80px"
           maxLength={maxLength}
           minLength={minLength}
           maxValue={max}
@@ -51,7 +51,7 @@ export const NumberInput = (props: NumberInputProps) => {
           }
           title={""}
           placeholder={placeholderMax || ""}
-          width="100px"
+          width="80px"
           maxLength={maxLength}
           minLength={minLength}
           step={step}

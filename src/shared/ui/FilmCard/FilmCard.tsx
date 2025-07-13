@@ -7,7 +7,7 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
   const { _id, posterUrl, title, raiting, year, isArticle, width } = props;
 
   return (
-    <div className={styles.filmCard} style={width ? {width} : {}}>
+    <div className={styles.filmCard} style={width ? { width } : {}}>
       <Link
         to={`/film/${_id}`}
         className={styles.imageContainer}
@@ -34,13 +34,15 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
         )}
       </Link>
       <div className={styles.filmCardInfo}>
-        {!isArticle ? (
-          <Link className={"title"} to={`/film/${_id}`}>
-            {title}
-          </Link>
-        ) : (
-          <span className="buttonTitle">{title}</span>
-        )}
+        <div className={styles.titleContainer}>
+          {!isArticle ? (
+            <Link className={"title"} to={`/film/${_id}`}>
+              {title}
+            </Link>
+          ) : (
+            <span className="buttonTitle">{title}</span>
+          )}
+        </div>
         <div className={clsx(styles.filmCardAbout, "description")}>
           <p>{raiting ? `${raiting}/10` : "Без рейтинга"}</p>
           <p>{year ? year : ""}</p>

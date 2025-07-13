@@ -6,7 +6,7 @@
   flex-grow: 0;
   border: none;
   outline: none;
-  padding: 10px;
+  padding: clamp(0.313rem, 0.202rem + 0.469vw, 0.625rem);
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }

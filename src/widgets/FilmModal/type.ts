@@ -1,4 +1,4 @@
-type TFilm = {
+export type TFilm = {
   _id: string;
   posterUrl?: string;
   title: string;

@@ -5,7 +5,7 @@
 }
 
 .label {
-  padding: 15px;
+  padding: clamp(0.313rem, 0.092rem + 0.939vw, 0.938rem);
   background-color: var(--widgets-color-hover);
   block-size: 30px;
   display: flex;

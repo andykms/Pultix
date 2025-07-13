@@ -8,6 +8,8 @@ export interface FavoritesState {
   favorites: TFilm[];
   error: boolean,
   loading: boolean,
+  hasMore: boolean,
+  allFavoritesCount: number;
 }
 
 const initialState: FavoritesState = {
@@ -15,6 +17,8 @@ const initialState: FavoritesState = {
   favoritesIds: [],
   error: false,
   loading: false,
+  hasMore: true,
+  allFavoritesCount: 0,
 };
 
 export const favoritesSlice = createSlice({
@@ -35,6 +39,7 @@ export const favoritesSlice = createSlice({
       state.favoritesIds = action.payload.id ? action.payload.id : [];
       state.error = false;
       state.loading = false;
+      state.allFavoritesCount = action.payload.id? action.payload.id.length : 0;
     })
     builder.addCase(deleteFavouriteIdThunk.fulfilled, (state, action)=>{
       const deletedId = action.payload.id;
@@ -42,10 +47,13 @@ export const favoritesSlice = createSlice({
         state.favoritesIds = state.favoritesIds.filter((item)=> item !== deletedId);
         state.favorites = state.favorites.filter((item)=> item._id !== deletedId);
       }
+      state.allFavoritesCount -=1;
     })
     builder.addCase(postFavoriteIdThunk.fulfilled, (state, action)=>{
       state.error = false;
       state.loading = false;
+      state.allFavoritesCount += 1;
+      state.hasMore = true;
     })
     builder.addCase(getFavouriteFilmByIdThunk.rejected, (state, action)=>{
       state.error = true;
@@ -55,29 +63,36 @@ export const favoritesSlice = createSlice({
       state.error = false;
       state.loading = true;
     })
-    builder.addCase(getFavouriteFilmByIdThunk.fulfilled, (state, action)=>{
-      state.error = false;
-      state.loading = false;
-      state.favorites.push(moveToFilmViewType(action.payload));
-    })
-    builder.addCase(getFavouritesFilmsThunk.rejected, (state,action)=>{
-      state.error = true;
-      state.loading = false;
-    })
-    builder.addCase(getFavouritesFilmsThunk.pending, (state,action)=>{
-      state.error = false;
-      state.loading = true;
-    })
     builder.addCase(getFavouritesFilmsThunk.fulfilled, (state,action)=>{
       state.error = false;
       state.loading = false;
       action.payload.forEach((filmApi)=>{
-        state.favorites.push(moveToFilmViewType(filmApi));
+        if(filmApi.id) state.favorites.push(moveToFilmViewType(filmApi));
       })
+      if(state.favorites.length >= state.allFavoritesCount) {
+        state.hasMore = false;
+      } else {
+        state.hasMore = true;
+      }
     })
+  },
+  selectors: {
+    getFavouritesFilms: (state) => {
+      return state.favorites;
+    },
+    getFavouritesIds: (state) => {
+      return state.favoritesIds
+    },
+    getShowcaseFavourites: (state) =>{ 
+      return state.favorites.slice(0,5);
+    },
+    getHasMore: (state) => {
+      return state.hasMore;
+    }
   }
 });
 
 export const { addFavorite, removeFavorite } = favoritesSlice.actions;
+export const {getFavouritesFilms, getFavouritesIds, getShowcaseFavourites, getHasMore} = favoritesSlice.selectors;
 
-export default favoritesSlice.reducer;
+export const favoritesReducer = favoritesSlice.reducer;

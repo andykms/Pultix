@@ -1,11 +1,11 @@
-import { getFilmById, getFilms, getFilmsBySearchParams, type TSearchParam } from "../../api/api";
+import { getFilmById, getFilms, getFilmsBySearchParams, } from "../../api/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TFilm } from "../../types/views/RegistrationPage";
 
 export const getFilmsBySearchThunk = createAsyncThunk(
-  "film/getFilms",
-  async (searchParams: TSearchParam) => {
-    const response = await getFilmsBySearchParams(searchParams);
+  "film/getFilmsBySearch",
+  async (data: {searchParams: string, limit: number}) => {
+    const response = await getFilmsBySearchParams(data.searchParams, data.limit);
     return response;
   }
 );
@@ -25,3 +25,19 @@ export const getFilmsThunk = createAsyncThunk(
     return response;
   }
 );
+
+export const getShowCaseFilmsThunk = createAsyncThunk(
+  'film/getShowCaseFilms',
+  async () => {
+    const response = await getFilms(10);
+    return response;
+  }
+)
+
+export const getSearchFilmsThunk = createAsyncThunk(
+  'film/getSearchFilms',
+  async (query: string) => {
+    const response = await getFilmsBySearchParams(`search?query=${query}`, 50);
+    return response;
+  } 
+)

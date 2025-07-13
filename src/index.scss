@@ -2,7 +2,7 @@
 
 :root {
   --main-font-family: 'Netflix Sans', sans-serif;
-  --main-background-color: rgb(47, 47, 47);
+  --main-background-color: rgb(39, 39, 39);
   --widgets-color: rgb(36, 36, 36);
   --main-text-color: rgb(255, 255, 255);
   --description-text-color: rgb(180, 180, 180);
@@ -21,7 +21,7 @@
   --modal-padding: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
   --text-dropdown-height: clamp(18.75rem, 14.349rem + 18.779vw, 31.25rem);
   --text-dropdown-height-min: clamp(3.125rem, 2.025rem + 4.695vw, 6.25rem);
-  --film-content-bbackground: #101010;
+  --film-content-background: #101010;
 } 
 
 
@@ -137,6 +137,7 @@ body {
 	line-height: 1;
 	vertical-align: baseline;
 	border: 0;
+  box-sizing: border-box;
 }
 
 ol,
@@ -164,8 +165,8 @@ table {
 
 body {
   font-family: var(--main-font-family);
-  background-color: var(--main-background-color);
-  box-sizing: border-box;
+  background-color: var(--film-content-background);
+  margin: 0 var(--modal-padding);
 }
 
 .big-title {

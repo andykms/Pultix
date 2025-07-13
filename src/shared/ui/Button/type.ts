@@ -5,5 +5,6 @@ export interface ButtonProps {
   onClick?: () => void;
   style?: React.CSSProperties;
   disabled?: boolean;
+  htmlType?: "button" | "reset" | "submit" | undefined;
 }
 

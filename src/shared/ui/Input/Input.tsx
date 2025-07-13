@@ -16,10 +16,9 @@ export const InputUI = ({
   step
 }: InputProps) => {
   return (
-    <div className={styles.inputContainer}>
+    <div className={styles.inputContainer} style={{width}}>
       <span className={"text"}>{title}</span>
-      <label className={styles.label} style={{ width }}>
-        {children}
+      <label className={styles.label} style={{ width: '100%' }}>
         <input
           className={styles.input}
           type={type? type: 'text'}
@@ -32,6 +31,7 @@ export const InputUI = ({
           {...(minValue !== undefined && { min: Number(minValue) })}
           {...(step && { step })}
         />
+        {children}
       </label>
     </div>
   );

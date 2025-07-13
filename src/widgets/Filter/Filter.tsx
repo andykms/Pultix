@@ -21,11 +21,26 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
   const [filtersCount, setFiltersCount] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [inputsValues, setInputsValues] = useState(inputs);
-  const [dropdownsValues, setDropdownsValues] = useState(dropdowns);
-  const [dropdownsWithScrollValues, setDropdownsWithScrollValues] =
-    useState(dropdownsWithScroll);
-  const [numberInputsValues, setNumberInputsValues] = useState(numberInputs);
+  const [inputsValues, setInputsValues] = useState(
+    inputs.map((item) => {
+      return { ...item, error: true };
+    })
+  );
+  const [dropdownsValues, setDropdownsValues] = useState(
+    dropdowns.map((item) => {
+      return { ...item, error: true };
+    })
+  );
+  const [dropdownsWithScrollValues, setDropdownsWithScrollValues] = useState(
+    dropdownsWithScroll.map((item) => {
+      return { ...item, error: true };
+    })
+  );
+  const [numberInputsValues, setNumberInputsValues] = useState(
+    numberInputs.map((item) => {
+      return { ...item, error: true };
+    })
+  );
 
   const onChangeInput = (id: string, value: string) => {
     setInputsValues(
@@ -47,25 +62,45 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
   ) => {
     setNumberInputsValues(
       numberInputsValues.map((item) => {
-      
-
         if (item.id === id) {
+          let newItem;
           const validValue = getValidNumber(value, 3, item.max, item.min);
+          const parsedNum = Number.parseFloat(validValue);
           if (type === "min") {
-            if(item.valueMin === '0' && validValue !== "0") setFiltersCount(filtersCount + 1);
-            else if(item.valueMin !== '0' && validValue === "0") setFiltersCount(filtersCount - 1);
-            return {
+            if (item.valueMin === "0" && validValue !== "0")
+              setFiltersCount(filtersCount + 1);
+            else if (item.valueMin !== "0" && validValue === "0")
+              setFiltersCount(filtersCount - 1);
+            newItem = {
               ...item,
               valueMin: validValue,
             };
           } else {
-            if(item.valueMax === '0' && validValue !== "0") setFiltersCount(filtersCount + 1);
-            else if(item.valueMax !== '0' && validValue === "0") setFiltersCount(filtersCount - 1);
-            return {
+            if (item.valueMax === "0" && validValue !== "0")
+              setFiltersCount(filtersCount + 1);
+            else if (item.valueMax !== "0" && validValue === "0")
+              setFiltersCount(filtersCount - 1);
+            newItem = {
               ...item,
               valueMax: validValue,
             };
           }
+          const parsedMin = Number.parseFloat(item.valueMin);
+          const parsedMax = Number.parseFloat(item.valueMax);
+          const isInRangeMin = parsedMin >= item.min && parsedMin <= item.max;
+          const isInRangeMax = parsedMax >= item.min && parsedMax <= item.max;
+          if (
+            isNaN(parsedMin) ||
+            isNaN(parsedMax) ||
+            !isInRangeMin ||
+            !isInRangeMax
+          ) {
+            item.error = true;
+          } else {
+            item.error = false;
+          }
+
+          return newItem;
         }
         return item;
       })
@@ -112,15 +147,10 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
   };
   return (
     <>
-      <div
-        className={styles.filterContainer}
-        style={{
-          blockSize: isOpen ? "auto" : "50px",
-        }}
-      >
+      <div className={styles.filterContainer}>
         <ButtonUI
           type={filtersCount > 0 ? "primary" : "secondary"}
-          width={filtersCount > 0 ? "100px" : "50px"}
+          width="auto"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -139,6 +169,7 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             <span className={"buttonTitle"}>{`(${filtersCount})`}</span>
           )}
         </ButtonUI>
+
         {isOpen && (
           <div className={styles.filter} style={{ width }}>
             <h2 className={"title"}>{`Фильтры${
@@ -201,7 +232,7 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
               }
               style={{ justifySelf: "flex-end" }}
             >
-              <span className={"buttonTitle"}>Применить фильтры</span>
+              <span className={"buttonTitle"}>Применить</span>
             </ButtonUI>
           </div>
         )}
