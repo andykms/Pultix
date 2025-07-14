@@ -4,6 +4,7 @@ import { GalleryDemo } from '../../widgets/GalleryDemo/GalleryDemo';
 import { FilmCardUI } from '../../shared/ui/FilmCard/FilmCard';
 import { SearchWithGallery } from '../../widgets/SearchWithGallery/SearchWithGallery';
 import { Header } from '../../widgets/Header/Header';
+import { ButtonToggleTheme } from '../../shared/ui/ButtonToggleTheme/ButtonToggleTheme';
 
 export const MainPage: React.FC<MainPageProps> = (props: MainPageProps) => {
   const { favourites, films } = props;
@@ -34,6 +35,7 @@ export const MainPage: React.FC<MainPageProps> = (props: MainPageProps) => {
         title={'Все'}
         maxCount={5}
       ></GalleryDemo>
+      <ButtonToggleTheme></ButtonToggleTheme>
     </div>
   );
 };

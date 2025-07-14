@@ -10,6 +10,7 @@ import { getSearchFilmsThunk } from '../../features/Film/thunk';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Loader } from '../../shared/ui/Loader/Loader';
+import { getSearchPage } from '../../features/Film/FilmSlice';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Search = () => {
   const [currentQuery, setCurrentQuery] = useState<string | null>();
 
   const films = useSelector(getSearchFilms);
+  const page = useSelector(getSearchPage);
 
   const hasMore = useSelector(getHasMoreSearched);
 
@@ -28,12 +30,12 @@ export const Search = () => {
   }, [dispatch, searchParams]);
 
   useEffect(() => {
-    if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
+    if (currentQuery) dispatch(getSearchFilmsThunk({ query: currentQuery, page, limit: 50 }));
     return () => {};
   }, [currentQuery]);
 
   const onNext = () => {
-    if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
+    if (currentQuery) dispatch(getSearchFilmsThunk({ query: currentQuery, page, limit: 50 }));
   };
 
   return (

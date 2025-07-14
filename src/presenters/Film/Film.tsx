@@ -48,7 +48,6 @@ export const Film = () => {
   if (isLoad) {
     return <Loader></Loader>;
   }
-  console.log(favoriteIds);
   return currentFilm ? (
     <FilmPage
       isLoad={isLoad}

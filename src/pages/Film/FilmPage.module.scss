@@ -41,7 +41,7 @@
   inset-block-start: var(--modal-padding);
   inset-inline-end: var(--modal-padding);
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--opacity-background);
 }
 
 .noImage {
@@ -70,7 +70,7 @@
   left: 0;
   width: 100%;
   height: inherit;
-  background: linear-gradient(rgba(0, 0, 0, 0.3));
+  background: linear-gradient(var(--opacity-background));
   z-index: 0;
 }
 

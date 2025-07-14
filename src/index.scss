@@ -21,7 +21,18 @@
   --modal-padding: clamp(1.25rem, 0.59rem + 2.817vw, 3.125rem);
   --text-dropdown-height: clamp(10.625rem, 7.324rem + 14.085vw, 20rem);
   --text-dropdown-height-min: clamp(3.125rem, 2.025rem + 4.695vw, 6.25rem);
+  --opacity-background: rgba(0, 0, 0, 0.5);
   --film-content-background: #101010;
+}
+
+.light {
+  --main-background-color: #e2e2e2;
+  --main-text-color: #000;
+  --description-text-color: #191919;
+  --widgets-color: rgb(200, 200, 200);
+  --widgets-color-hover: rgb(173, 173, 173);
+  --film-content-background: #f8f8f8;
+  --opacity-background: rgba(255, 255, 255, 0.3);
 }
 
 html,

@@ -48,7 +48,6 @@ export const FilmModal = () => {
   if (isLoad) {
     return <Loader></Loader>;
   }
-  console.log(favoriteIds);
   return currentFilm ? (
     <FilmModalPage
       film={currentFilm}

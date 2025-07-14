@@ -47,7 +47,6 @@ export const favoritesSlice = createSlice({
     });
     builder.addCase(deleteFavouriteIdThunk.fulfilled, (state, action) => {
       const deletedId = action.payload.id;
-      console.log(deletedId);
       if (deletedId) {
         state.favoritesIds = state.favoritesIds.filter((item) => item !== deletedId);
         state.favorites = state.favorites.filter((item) => item._id !== deletedId);

@@ -18,6 +18,8 @@ export interface FilmState {
   loading: boolean;
   hasMore: boolean;
   hasMoreSearched: boolean;
+  page: number;
+  searchPage: number;
 }
 
 const initialState: FilmState = {
@@ -29,6 +31,8 @@ const initialState: FilmState = {
   loading: false,
   hasMore: true,
   hasMoreSearched: true,
+  page: 1,
+  searchPage: 1,
 };
 
 export const filmSlice = createSlice({
@@ -41,12 +45,14 @@ export const filmSlice = createSlice({
     clearFilms: (state) => {
       state.hasMore = true;
       state.films = [];
+      state.page = 1;
     },
     clearCurrentFilm: (state) => {
       state.currentFilm = null;
     },
     clearSearchingFilms: (state) => {
       state.searchedFilms = [];
+      state.searchPage = 1;
     },
   },
   extraReducers: (builder) => {
@@ -74,6 +80,7 @@ export const filmSlice = createSlice({
     builder.addCase(getFilmsBySearchThunk.fulfilled, (state, action) => {
       state.error = false;
       state.loading = false;
+      state.page += 1;
       action.payload.forEach((filmApi) => {
         state.films.push(moveToFilmViewType(filmApi));
       });
@@ -126,6 +133,7 @@ export const filmSlice = createSlice({
     builder.addCase(getSearchFilmsThunk.fulfilled, (state, action) => {
       state.error = false;
       state.loading = false;
+      state.searchPage += 1;
       action.payload.forEach((filmApi) => {
         state.searchedFilms.push(moveToFilmViewType(filmApi));
       });
@@ -156,6 +164,12 @@ export const filmSlice = createSlice({
     getIsLoading: (state) => {
       return state.loading;
     },
+    getCurrentPage: (state) => {
+      return state.page;
+    },
+    getSearchPage: (state) => {
+      return state.searchPage;
+    },
   },
 });
 
@@ -169,6 +183,8 @@ export const {
   getHasMoreSearched,
   getSearchFilms,
   getIsLoading,
+  getCurrentPage,
+  getSearchPage,
 } = filmSlice.selectors;
 
 export const filmReducer = filmSlice.reducer;

@@ -12,7 +12,6 @@ export function moveToFilmViewType(filmApi: TFilmApi): TFilm {
       fees.push({ ...filmApi.fees.world, country: 'Мир' });
     }
   }
-
   return {
     _id: filmApi.id.toString(),
     posterUrl: filmApi.poster?.url || undefined,
@@ -37,8 +36,9 @@ export function moveToFilmViewType(filmApi: TFilmApi): TFilm {
     filmDistribution: {
       budget: filmApi.budget,
       fees: fees,
-      premierWorld: filmApi.premiere?.world || undefined,
-      premierRussia: filmApi.premiere?.russia || undefined,
+      premierWorld: filmApi.premiere?.world || filmApi.filmDistribution?.premierWorld || undefined,
+      premierRussia:
+        filmApi.premiere?.russia || filmApi.filmDistribution?.premierRussia || undefined,
     },
     trailerUrl: filmApi.videos?.trailers.find((item) => item.url.length > 0)?.url || undefined,
     movieLength: filmApi.movieLength || undefined,

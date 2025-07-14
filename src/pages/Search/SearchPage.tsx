@@ -16,14 +16,16 @@ export const SearchPage: React.FC<SearchPageProps> = (props: SearchPageProps) =>
         <Link to='/' style={{ textDecoration: 'none' }}>
           <ButtonBack onClose={() => {}}></ButtonBack>
         </Link>
-        <SearchField></SearchField>
+        <SearchField searchValue={searchValue}></SearchField>
       </div>
       <div className={styles.films}>
         {!infiniteScrollProps.hasMore && films.length <= 0 ? (
-          <span className='big-title' style={{ lineHeight: '50px' }}>
-            {`К сожалению, ничего не нашлось ${String.fromCodePoint(128532)}, но попробуйте другими
-            словами, может, найдётся всё ${String.fromCodePoint(128522)}!`}
-          </span>
+          <div className={styles.notFoundTitle}>
+            <span className='big-title'>
+              {`К сожалению, ничего не нашлось ${String.fromCodePoint(128532)}, но попробуйте другими
+            словами ${String.fromCodePoint(128522)}`}
+            </span>
+          </div>
         ) : (
           <GalleryInfinite
             CardType={FilmCardUI}

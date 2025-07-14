@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--opacity-background);
   position: fixed;
   inset-inline-start: 0;
   padding: 15px;
@@ -17,4 +17,8 @@
 
 .films {
   padding-block-start: 100px;
+}
+
+.buttonToggleContainer {
+  position: relative;
 }

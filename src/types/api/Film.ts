@@ -77,6 +77,14 @@ export interface TFilmApi {
   rating: TRatingApi;
   description: string | null;
   premiere?: TPremiereApi;
+  filmDistribution?: {
+    budget?: {
+      value: number;
+      currency: string;
+    };
+    premierRussia?: string;
+    premierWorld?: string;
+  };
   year: number;
   poster?: TPosterApi;
   facts?: TFactApi[] | null;

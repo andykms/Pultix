@@ -12,8 +12,15 @@
 }
 
 .button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+  cursor: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--description-text-color);
+}
+
+.button:disabled:hover {
+  cursor: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--description-text-color);
 }
 
 .primary {
@@ -37,5 +44,5 @@
 }
 
 .opacity {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--opacity-background);
 }

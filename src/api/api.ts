@@ -1,4 +1,5 @@
 import type { TFilmApi, TFilmApiLimitReposponse } from '../types/api/Film';
+import { REQUIRED_FIELDS } from './apiSearchParams';
 
 const apiUrl = import.meta.env.VITE_API_MOVIE;
 const apiKey = import.meta.env.VITE_X_API_KEY;
@@ -7,8 +8,14 @@ const apiSearchUrl = import.meta.env.VITE_API_MOVIE_SEARCH;
 const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 
-export function getFilms(limit: number | string): Promise<TFilmApi[]> {
-  return fetch(`${apiUrl}?limit=${limit}`, {
+export function getFilms(page: number, limit: number | string): Promise<TFilmApi[]> {
+  const url = new URL(apiUrl);
+  REQUIRED_FIELDS.forEach((field) => {
+    url.searchParams.append('notNullFields', field);
+  });
+  url.searchParams.append('page', page.toString());
+  url.searchParams.append('limit', limit.toString());
+  return fetch(url.href, {
     method: 'GET',
     headers: {
       'X-API-KEY': apiKey,
@@ -27,8 +34,20 @@ export function getFilmById(id: number | string): Promise<TFilmApi> {
   }).then((response) => checkResponse<TFilmApi>(response));
 }
 
-export function getFilmsBySearchParams(search: string, limit: number): Promise<TFilmApi[]> {
-  let resultUrl = `${apiUrl}?limit=${limit}&${search}`;
+export function getFilmsBySearchParams(
+  search: string,
+  page: number,
+  limit: number,
+): Promise<TFilmApi[]> {
+  const url = new URL(apiUrl);
+  REQUIRED_FIELDS.forEach((field) => {
+    url.searchParams.append('notNullFields', field);
+  });
+  url.searchParams.append('limit', limit.toString());
+  url.searchParams.append('page', page.toString());
+
+  let resultUrl = url.href;
+  if (search.length > 0) resultUrl += `&${search}`;
   return fetch(resultUrl, {
     method: 'GET',
     headers: {
@@ -36,12 +55,17 @@ export function getFilmsBySearchParams(search: string, limit: number): Promise<T
     },
   })
     .then((response) => checkResponse<TFilmApiLimitReposponse>(response))
-    .then((response) => response.docs);
+    .then((response) => {
+      return response.docs;
+    });
 }
 
-export function getFilmsByName(search: string, limit: number): Promise<TFilmApi[]> {
-  let resultUrl = `${apiSearchUrl}?query=${search}&limit=${limit}`;
-  return fetch(resultUrl, {
+export function getFilmsByName(search: string, page: number, limit: number): Promise<TFilmApi[]> {
+  const url = new URL(apiSearchUrl);
+  url.searchParams.append('query', search);
+  url.searchParams.append('page', page.toString());
+  url.searchParams.append('limit', limit.toString());
+  return fetch(url.href, {
     method: 'GET',
     headers: {
       'X-API-KEY': apiKey,

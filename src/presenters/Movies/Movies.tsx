@@ -6,6 +6,7 @@ import { clearFilms, getHasMore, getFilms } from '../../features/Film/FilmSlice'
 import { getFilmsBySearchThunk } from '../../features/Film/thunk';
 import { type TSearchParam, createSearchUrl } from '../../api/apiSearchParams';
 import { Loader } from '../../shared/ui/Loader/Loader';
+import { getCurrentPage } from '../../features/Film/FilmSlice';
 
 /**Импортируем ключи для searchParams (genre.names...) */
 import { SEARCH_PARAMS, SEARCH_OPERATIONS } from '../../api/apiSearchParams';
@@ -19,6 +20,7 @@ export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch();
+  const page = useSelector(getCurrentPage);
 
   /**id для сопоставления значений из формы и требуемых нам значений */
   const ids = {
@@ -58,12 +60,12 @@ export const Movies = () => {
 
   useEffect(() => {
     dispatch(clearFilms());
-    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 }));
+    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), page, limit: 50 }));
   }, [searchParams]);
 
   /**Функция отправки экшена для подзагрузки фильмов*/
   const addFilms = () =>
-    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 }));
+    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), page, limit: 50 }));
 
   /**Коллбэк при нажатии на кнопку  применения фильтров*/
   const onSubmit = (values: TValue[], ranges: TRange[]) => {
@@ -125,9 +127,7 @@ export const Movies = () => {
 
   return (
     <MoviesPage
-      films={films.map((item) => {
-        return { ...item, onClick: onClickLink };
-      })}
+      films={films}
       ids={ids}
       infiniteScrollProps={{
         hasMore: hasMore,

@@ -1,4 +1,3 @@
-import './App.scss';
 import './index.scss';
 import { Movies } from './presenters/Movies/Movies';
 import { Route, Router, useLocation } from 'react-router-dom';
@@ -24,7 +23,6 @@ function App() {
 
   const backgroundLocation = location.state?.background;
 
-  console.log(backgroundLocation);
   return (
     <>
       <Routes location={backgroundLocation || location}>

@@ -3,7 +3,7 @@ import type { FilterProps } from './type';
 import { NumberInput } from '../../shared/ui/NumberInput/NumberInput';
 import { Dropdown } from '../../shared/ui/Dropdown/Dropdown';
 import { InputUI } from '../../shared/ui/Input/Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getValidNumber } from '../../shared/lib/utilsFunction/getValidNumber';
 import type { TParameter } from '../../shared/ui/Dropdown/type';
 import { ButtonUI } from '../../shared/ui/Button/Button';
@@ -14,26 +14,36 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
   const [filtersCount, setFiltersCount] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const [inputsValues, setInputsValues] = useState(
     inputs.map((item) => {
-      return { ...item, error: true };
+      return { ...item, error: false };
     }),
   );
   const [dropdownsValues, setDropdownsValues] = useState(
     dropdowns.map((item) => {
-      return { ...item, error: true };
+      return { ...item, error: false };
     }),
   );
   const [dropdownsWithScrollValues, setDropdownsWithScrollValues] = useState(
     dropdownsWithScroll.map((item) => {
-      return { ...item, error: true };
+      return { ...item, error: false };
     }),
   );
   const [numberInputsValues, setNumberInputsValues] = useState(
     numberInputs.map((item) => {
-      return { ...item, error: true };
+      return { ...item, error: false };
     }),
   );
+
+  useEffect(() => {
+    if (numberInputsValues.some((item) => item.error)) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [numberInputsValues]);
 
   const onChangeInput = (id: string, value: string) => {
     setInputsValues(
@@ -53,31 +63,33 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
       numberInputsValues.map((item) => {
         if (item.id === id) {
           let newItem;
-          const validValue = getValidNumber(value, 3, item.max, item.min);
-          const parsedNum = Number.parseFloat(validValue);
           if (type === 'min') {
-            if (item.valueMin === '0' && validValue !== '0') setFiltersCount(filtersCount + 1);
-            else if (item.valueMin !== '0' && validValue === '0') setFiltersCount(filtersCount - 1);
+            if (item.valueMin === '0' && value !== '0') setFiltersCount(filtersCount + 1);
+            else if (item.valueMin !== '0' && value === '0') setFiltersCount(filtersCount - 1);
             newItem = {
               ...item,
-              valueMin: validValue,
+              valueMin: value,
             };
           } else {
-            if (item.valueMax === '0' && validValue !== '0') setFiltersCount(filtersCount + 1);
-            else if (item.valueMax !== '0' && validValue === '0') setFiltersCount(filtersCount - 1);
+            if (item.valueMax === '0' && value !== '0') setFiltersCount(filtersCount + 1);
+            else if (item.valueMax !== '0' && value === '0') setFiltersCount(filtersCount - 1);
             newItem = {
               ...item,
-              valueMax: validValue,
+              valueMax: value,
             };
           }
-          const parsedMin = Number.parseFloat(item.valueMin);
-          const parsedMax = Number.parseFloat(item.valueMax);
+          if (newItem.valueMax === newItem.valueMin && newItem.valueMin === '') {
+            newItem.error = false;
+            return newItem;
+          }
+          const parsedMin = Number.parseFloat(newItem.valueMin);
+          const parsedMax = Number.parseFloat(newItem.valueMax);
           const isInRangeMin = parsedMin >= item.min && parsedMin <= item.max;
           const isInRangeMax = parsedMax >= item.min && parsedMax <= item.max;
           if (isNaN(parsedMin) || isNaN(parsedMax) || !isInRangeMin || !isInRangeMax) {
-            item.error = true;
+            newItem.error = true;
           } else {
-            item.error = false;
+            newItem.error = false;
           }
 
           return newItem;
@@ -184,6 +196,7 @@ export const Filter: React.FC<FilterProps> = (props: FilterProps) => {
               />
             ))}
             <ButtonUI
+              disabled={isDisabled}
               type='primary'
               width='90%'
               onClick={() =>

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { useLocation } from 'react-router-dom';
 
 export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
-  const { _id, posterUrl, title, raiting, year, isArticle, width, onClick } = props;
+  const { _id, posterUrl, title, raiting, year, isArticle, width } = props;
   const location = useLocation();
 
   return (
@@ -15,7 +15,6 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
         state={{ background: location }}
         className={styles.imageContainer}
         style={isArticle ? { transform: 'none' } : {}}
-        onClick={() => onClick?.(props)}
       >
         {posterUrl ? (
           <img src={posterUrl} alt={`Постер к фильму ${title}`} />
@@ -39,7 +38,7 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
       </Link>
       <div className={styles.filmCardInfo}>
         {!isArticle ? (
-          <Link className={'title'} to={`/films/${_id}`} onClick={() => onClick?.(props)}>
+          <Link className={'title'} to={`/films/${_id}`}>
             {title}
           </Link>
         ) : (

@@ -1,0 +1,23 @@
+.theme {
+  position: fixed;
+  z-index: 200;
+  inset-block-end: 25px;
+  inset-inline-start: 25px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--opacity-background);
+}
+
+.opened {
+  animation: open 0.3s ease-in-out;
+}
+
+@keyframes open {
+  from {
+    block-size: clamp(0.938rem, 0.167rem + 3.286vw, 3.125rem);
+  }
+
+  to {
+    block-size: calc(2 * clamp(0.938rem, 0.167rem + 3.286vw, 3.125rem));
+  }
+}

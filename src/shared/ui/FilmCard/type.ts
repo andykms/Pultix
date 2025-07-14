@@ -6,5 +6,4 @@ export interface FilmCardProps {
   year?: number;
   isArticle?: boolean;
   width?: string;
-  onClick?: (film: FilmCardProps) => void;
 }

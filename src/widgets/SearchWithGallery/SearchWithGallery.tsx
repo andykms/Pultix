@@ -16,7 +16,6 @@ export const SearchWithGallery: React.FC<SearchWithGalleryProps> = (
 
   useEffect(() => {
     if (films.length <= 1) return;
-    console.log(films.map((item) => item.title));
     const timer = setInterval(() => {
       setDirection('left');
       startAnimation();

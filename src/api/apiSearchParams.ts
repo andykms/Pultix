@@ -8,6 +8,15 @@ export const SEARCH_OPERATIONS = {
   INCLUDE: '%2B',
 };
 
+export const REQUIRED_FIELDS = [
+  'name',
+  'description',
+  'premiere.world',
+  'premiere.russia',
+  'year',
+  'rating.kp',
+];
+
 export type TSearchParam = {
   value: string[];
   key: string;

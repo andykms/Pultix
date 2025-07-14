@@ -17,11 +17,11 @@ import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import clsx from 'clsx';
 import { Loader } from '../../shared/ui/Loader/Loader';
+import { ButtonToggleTheme } from '../../shared/ui/ButtonToggleTheme/ButtonToggleTheme';
 
 export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
   const { film, isInFavourites, onChangeFavourites, isLoad } = props;
   const [isOpenAddToFavourites, setIsOpenAddToFavourites] = useState(false);
-
   const navigate = useNavigate();
 
   const [currentTab, setCurrentTab] = useState('0');
@@ -118,7 +118,7 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
       ? film.filmDistribution.fees || []
       : [];
 
-  if (film.filmDistribution && film.filmDistribution.fees.length > 0) {
+  if (film.filmDistribution) {
     tabs.push({
       id: '1',
       title: 'Прокат',
@@ -159,7 +159,6 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
       </section>
     );
   }
-
   return (
     <section className={styles.filmPage}>
       <div className={styles.buttonCloseContainer}>
@@ -204,12 +203,17 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
             </span>
             <FilmAboutDetail {...film} {...{ ref: filmAboutRef }} />
           </div>
-          {film.filmDistribution && film.filmDistribution.fees.length > 0 && (
+          {film.filmDistribution && (
             <div className={styles.oneBlock}>
               <span ref={titleBudgetInfoRef} className='big-title'>
                 Прокат
               </span>
-              <BudgetInfo {...{ ...film.filmDistribution, fees, ref: budgetInfoRef }}></BudgetInfo>
+              <BudgetInfo
+                premierRussia={film.filmDistribution.premierRussia}
+                premierWorld={film.filmDistribution.premierWorld}
+                fees={fees}
+                {...{ ref: budgetInfoRef }}
+              ></BudgetInfo>
             </div>
           )}
           {film.facts && film.facts.length > 0 && (
@@ -280,6 +284,7 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
           }}
         />
       )}
+      <ButtonToggleTheme></ButtonToggleTheme>
     </section>
   );
 };

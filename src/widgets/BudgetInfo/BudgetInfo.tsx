@@ -36,7 +36,7 @@ export const BudgetInfo: React.FC<BudgetInfoProps> = forwardRef(
 
     return (
       <div className={styles.rental} ref={ref}>
-        <BlockInfo title='Сборы' blocks={blocks}></BlockInfo>
+        {fees.length > 0 && <BlockInfo title='Сборы' blocks={blocks}></BlockInfo>}
         {premiers.length > 0 && <BlockInfo title='Премьера' blocks={premiers}></BlockInfo>}
       </div>
     );

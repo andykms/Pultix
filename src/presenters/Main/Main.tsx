@@ -17,7 +17,6 @@ export const Main = () => {
   const favoritesIds = useSelector(getFavouritesIds);
 
   useEffect(() => {
-    console.log(favoritesIds);
     dispatch(
       getFavouritesFilmsThunk({
         favorites: favoritesShowcase,

@@ -5,6 +5,7 @@ import { FilmCardUI } from '../../shared/ui/FilmCard/FilmCard';
 import type { FavoritesPageProps } from './type';
 import styles from './FavoritesPage.module.scss';
 import { ButtonBack } from '../../shared/ui/ButtonBack/ButtonBack';
+import { ButtonToggleTheme } from '../../shared/ui/ButtonToggleTheme/ButtonToggleTheme';
 
 export const FavoritesPage: React.FC<FavoritesPageProps> = (props: FavoritesPageProps) => {
   const { favorites, infiniteScrollProps, countFavorites } = props;
@@ -33,6 +34,7 @@ export const FavoritesPage: React.FC<FavoritesPageProps> = (props: FavoritesPage
           ></GalleryInfinite>
         )}
       </div>
+      <ButtonToggleTheme></ButtonToggleTheme>
     </div>
   );
 };

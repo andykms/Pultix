@@ -40,6 +40,9 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .filmCardAbout {
@@ -54,12 +57,6 @@
   align-items: center;
   block-size: 100%;
   inline-size: 100%;
-}
-
-.title {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .titleContainer a {

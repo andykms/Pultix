@@ -15,6 +15,7 @@ import { SearchField } from '../../widgets/SearchField/SearchField';
 import { FilmCardUI } from '../../shared/ui/FilmCard/FilmCard';
 import { ButtonClose } from '../../shared/ui/ButtonClose/ButtonClose';
 import { ButtonBack } from '../../shared/ui/ButtonBack/ButtonBack';
+import { ButtonToggleTheme } from '../../shared/ui/ButtonToggleTheme/ButtonToggleTheme';
 
 export const MoviesPage: React.FC<MoviesPageProps> = (props: MoviesPageProps) => {
   const { filterData, films, infiniteScrollProps, onSubmitFilters, ids } = props;
@@ -23,8 +24,8 @@ export const MoviesPage: React.FC<MoviesPageProps> = (props: MoviesPageProps) =>
     {
       valueMax: '',
       valueMin: '',
-      placeholderMax: '',
-      placeholderMin: '',
+      placeholderMax: 'до',
+      placeholderMin: 'от',
       maxLength: 3,
       minLength: 1,
       max: 10,
@@ -34,14 +35,14 @@ export const MoviesPage: React.FC<MoviesPageProps> = (props: MoviesPageProps) =>
       id: ids.ratingId,
     },
     {
-      valueMax: filterData.maxYear.toString(),
-      valueMin: filterData.minYear.toString(),
+      valueMax: '',
+      valueMin: '',
       placeholderMax: 'до',
       placeholderMin: 'от',
-      maxLength: 5,
-      minLength: 5,
+      maxLength: 4,
+      minLength: 0,
       max: filterData.maxYear,
-      min: filterData.minRating,
+      min: filterData.minYear,
       step: 1,
       title: 'Год',
       id: ids.yearId,

@@ -7,13 +7,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--opacity-background);
   position: fixed;
   inset-inline-start: 0;
   padding: 15px;
   inline-size: calc(100% - 30px);
+  z-index: 100;
 }
 
 .films {
   padding-block-start: 100px;
+}
+
+.notFoundTitle {
+  inline-size: 100%;
+  text-align: center;
+  line-height: 50px;
 }

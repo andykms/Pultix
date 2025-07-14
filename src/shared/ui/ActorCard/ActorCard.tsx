@@ -9,7 +9,7 @@ export const ActorCard: React.FC<ActorCardProps> = (props: ActorCardProps) => {
     <div className={styles.cardContainer}>
       <img className={styles.photo} src={photoUrl} alt={`Фото актера ${name}`} />
       <div className={styles.about}>
-        <h4 className='buttonTitle'>{name}</h4>
+        <h4 className='text'>{name}</h4>
         <span className='description'>{description}</span>
       </div>
     </div>
