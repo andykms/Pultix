@@ -27,7 +27,6 @@ export function getFilmById(id: number | string): Promise<TFilmApi> {
   }).then((response) => checkResponse<TFilmApi>(response));
 }
 
-
 export function getFilmsBySearchParams(
   search: string,
   limit: number
@@ -45,7 +44,7 @@ export function getFilmsBySearchParams(
 
 export function getFilmsByName(
   search: string,
-  limit: number,
+  limit: number
 ): Promise<TFilmApi[]> {
   let resultUrl = `${apiSearchUrl}?query=${search}&limit=${limit}`;
   return fetch(resultUrl, {
@@ -58,7 +57,9 @@ export function getFilmsByName(
     .then((response) => response.docs);
 }
 
-export const postFavouriteId = (id: string) => {
+export const postFavouriteId = (
+  id: string
+): Promise<{ id: string; success: boolean }> => {
   if (localStorage.getItem("favourite") === null) {
     localStorage.setItem("favourite", id);
     return new Promise((resolve, reject) => {
@@ -87,7 +88,11 @@ export const getFavouriteIds = (): {
   if (!localStorage.getItem("favourite")) {
     return { id: null, success: false };
   }
-  return { id: localStorage.getItem("favourite")!.split("_"), success: true };
+
+  const idsRaw = localStorage.getItem('favourite')!.split("_");
+  const ids = idsRaw.filter((item)=>item.length > 0)
+
+  return { id: ids, success: true };
 };
 
 export const deleteFavouriteId = (
@@ -96,10 +101,18 @@ export const deleteFavouriteId = (
   if (localStorage.getItem("favourite") === null) {
     return { id: null, success: true };
   }
-  localStorage.setItem(
-    "favourite",
-    localStorage.getItem("favourite")!.replace(`_${id}`, "")
-  );
+
+  const ids = localStorage.getItem("favourite")?.split("_");
+  let newValues = [];
+  if (ids) {
+    for (const curId of ids) {
+      if (curId != id) {
+        newValues.push(curId);
+      }
+    }
+  }
+
+  localStorage.setItem("favourite", newValues.join("_"));
   return { id: id, success: true };
 };
 

@@ -1,0 +1,10 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  block-size: 100vh;
+  gap: 25px;
+  padding: var(--modal-padding);
+  text-align: center;
+  background-color: var(--primary-color-background-page);
+}

@@ -3,17 +3,17 @@ export type TFilm = {
   posterUrl?: string;
   title: string;
   raiting?: number;
-  maxRaiting: number;
+  maxRaiting?: number;
   description?: string;
   year?: number;
   genres?: string[];
   ageRaiting?: number;
   countries?: string[];
-  movieLength: number;
+  movieLength?: number;
 }
 
 export interface FilmModalProps {
   film: TFilm
-  onChangeInFavourites: (id?: string)=>void;
+  onChangeInFavourites: (id: string)=>void;
   isInFavourites: boolean;
 }

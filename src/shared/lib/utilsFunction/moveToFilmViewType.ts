@@ -14,7 +14,7 @@ export function moveToFilmViewType(filmApi: TFilmApi): TFilm {
   }
 
   return {
-        _id: filmApi.id,
+        _id: filmApi.id.toString(),
         posterUrl: filmApi.poster?.url || undefined,
         title: filmApi.name || filmApi.alternativeName||'',
         raiting: Object.values(filmApi.rating).find((item) => item !== null && item > 0) || undefined,

@@ -8,7 +8,7 @@ type TFilm = {
 }
 
 export interface AddFavouriteModalProps {
-  onChangeFavourites: (id?: string)=>void;
+  onChangeFavourites: (id: string)=>void;
   onCloseModal: ()=> void;
   film: TFilm;
 }

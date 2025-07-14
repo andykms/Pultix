@@ -4,4 +4,5 @@ export interface FilmPageProps {
   film: TFilm;
   isInFavourites: boolean;
   onChangeFavourites: (id: string)=>void;
+  isLoad: boolean;
 }

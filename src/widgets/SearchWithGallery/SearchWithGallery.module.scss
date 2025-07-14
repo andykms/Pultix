@@ -1,0 +1,76 @@
+.carousel {
+  position: relative;
+  inline-size: 100%;
+  block-size: 90vh;
+  background: var(--no-image-film-background);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.filmTitle {
+  position: absolute;
+  text-decoration: none;
+}
+
+.card {
+  position: absolute;
+  top: 50px;
+  left: calc(50% - auto);
+  margin: 0 auto;
+  inline-size: clamp(23.438rem, 22.887rem + 2.347vw, 25rem);
+  block-size: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.image {
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+}
+
+.leave[data-direction="left"] {
+  animation: leaveToLeft 0.8s forwards cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.enter[data-direction="left"] {
+  animation: enterFromRight 0.8s forwards cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes leaveToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+}
+
+@keyframes enterFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.searchContainer {
+  z-index: 100;
+  margin: 0 auto;
+  margin-top: auto;
+  padding-block-end: 20px;
+}

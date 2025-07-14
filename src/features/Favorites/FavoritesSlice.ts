@@ -1,5 +1,5 @@
 import type { TFilm} from "../../types/views/RegistrationPage";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { getFavoritesIdsThunk, postFavoriteIdThunk, deleteFavouriteIdThunk, getFavouriteFilmByIdThunk, getFavouritesFilmsThunk } from "./thunk";
 import { moveToFilmViewType } from "../../shared/lib/utilsFunction/moveToFilmViewType";
 
@@ -43,16 +43,20 @@ export const favoritesSlice = createSlice({
     })
     builder.addCase(deleteFavouriteIdThunk.fulfilled, (state, action)=>{
       const deletedId = action.payload.id;
+      console.log(deletedId)
       if(deletedId) {
         state.favoritesIds = state.favoritesIds.filter((item)=> item !== deletedId);
         state.favorites = state.favorites.filter((item)=> item._id !== deletedId);
       }
       state.allFavoritesCount -=1;
     })
-    builder.addCase(postFavoriteIdThunk.fulfilled, (state, action)=>{
+    builder.addCase(postFavoriteIdThunk.fulfilled, (state, action: PayloadAction<{id: string}>)=>{
+      const id = action.payload.id;
+      state.favoritesIds.push(id);
       state.error = false;
       state.loading = false;
       state.allFavoritesCount += 1;
+      
       state.hasMore = true;
     })
     builder.addCase(getFavouriteFilmByIdThunk.rejected, (state, action)=>{
@@ -69,7 +73,7 @@ export const favoritesSlice = createSlice({
       action.payload.forEach((filmApi)=>{
         if(filmApi.id) state.favorites.push(moveToFilmViewType(filmApi));
       })
-      if(state.favorites.length >= state.allFavoritesCount) {
+      if(state.favorites.length >= state.allFavoritesCount || action.payload.length <= 0) {
         state.hasMore = false;
       } else {
         state.hasMore = true;

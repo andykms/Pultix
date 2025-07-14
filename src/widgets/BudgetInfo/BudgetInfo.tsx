@@ -24,13 +24,13 @@ export const BudgetInfo: React.FC<BudgetInfoProps> = forwardRef(({
   const premiers = [];
   if (premierRussia) {
     premiers.push({
-      title: premierRussia,
+      title: new Date(premierRussia).toLocaleDateString(),
       description: "В России",
     });
   }
   if (premierWorld) {
     premiers.push({
-      title: premierWorld,
+      title: new Date(premierWorld).toLocaleDateString(),
       description: "В мире",
     });
   }

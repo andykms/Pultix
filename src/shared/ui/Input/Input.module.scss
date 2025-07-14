@@ -5,12 +5,13 @@
 }
 
 .label {
-  padding: clamp(0.313rem, 0.092rem + 0.939vw, 0.938rem);
+  padding: clamp(0.313rem, 0.202rem + 0.469vw, 0.625rem);
   background-color: var(--widgets-color-hover);
   block-size: 30px;
   display: flex;
   align-items: center;
   gap: 5px;
+  min-inline-size: 85px;
 }
 
 .input {

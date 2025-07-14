@@ -9,7 +9,7 @@ import { ButtonBack } from "../../shared/ui/ButtonBack/ButtonBack";
 export const FavoritesPage: React.FC<FavoritesPageProps> = (
   props: FavoritesPageProps
 ) => {
-  const { favorites, infiniteScrollProps } = props;
+  const { favorites, infiniteScrollProps, countFavorites } = props;
 
   return (
     <div className={styles.movieContainer}>
@@ -20,10 +20,12 @@ export const FavoritesPage: React.FC<FavoritesPageProps> = (
         <SearchField searchValue=""></SearchField>
       </div>
       <div className={styles.films}>
-        {!infiniteScrollProps.hasMore && favorites.length <= 0 ? (
-          <span className="big-title" style={{lineHeight: '50px'}}>
-            {`В избранном пусто ${String.fromCodePoint(128566)}`}
-          </span>
+        {countFavorites === 0 ? (
+          <div className={styles.empty}>
+            <span className="big-title" style={{ lineHeight: "50px" }}>
+              {`В избранном пусто ${String.fromCodePoint(128566)}`}
+            </span>
+          </div>
         ) : (
           <GalleryInfinite
             CardType={FilmCardUI}

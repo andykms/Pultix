@@ -26,6 +26,5 @@ export const createSearchUrl = (params: TSearchParam[]) => {
   if(url.endsWith('&')) {
     url = url.slice(0, url.length - 1);
   }
-  console.log('URL', url)
   return url;
 }

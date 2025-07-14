@@ -5,9 +5,10 @@
   flex-direction: column;
   padding: var(--modal-padding);
   block-size: 500px;
-  background-position: right;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: var(--no-image-film-background);
 }
 
 .buttonLink {
@@ -25,7 +26,8 @@
 .buttonCloseContainer {
   position: absolute;
   inset-inline-end: 50px;
-  z-index: 9;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .filmModal::after {
@@ -37,8 +39,8 @@
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 1),
-     rgba(0, 0, 0, 0.9),
+    rgb(67, 0, 0),
+     rgba(180, 60, 0, 0.9),
      rgba(0, 0, 0, 0),
    rgba(0, 0, 0, 0) 
   );

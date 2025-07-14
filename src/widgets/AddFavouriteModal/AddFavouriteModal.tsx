@@ -10,14 +10,14 @@ export const AddFavouriteModal: React.FC<AddFavouriteModalProps> = (
   const { film, onChangeFavourites, onCloseModal } = props;
 
   return (
-    <Modal title="Добавить в избранное?" onClose={() => onCloseModal()} width="60vw">
+    <Modal title="Добавить в избранное?" onClose={() => onCloseModal()} width="clamp(18.75rem, 7.746rem + 46.948vw, 50rem)">
       <div className={styles.CardContainer}><FilmCardUI {...film} isArticle={true} width={"auto"}></FilmCardUI></div>
       <div className={styles.buttonsContainer}>
       <ButtonUI
         type="primary"
         onClick={() => {
           onCloseModal();
-          onChangeFavourites();
+          onChangeFavourites(film._id);
         }}
         width="200px"
       >

@@ -89,7 +89,6 @@ export const Scrollable: Story = {
         isChoosen: false,
       });
     } 
-    console.log(years);
     const [params, setParams] = useState(years);
 
     const onChoose = (parametr: TParameter) => {

@@ -24,7 +24,6 @@ export const Search = () => {
 
 
   useEffect(() => {
-    console.log('cleared')
     dispatch(clearSearchingFilms());
     setCurrentQuery(searchParams.get("query"));
   }, [dispatch, searchParams]);

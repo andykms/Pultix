@@ -29,6 +29,7 @@ export const Base: Story = {
   },
   args: {
     onChangeFavourites: ()=>{},
+    isLoad: false,
     isInFavourites: false,
     film: {
       _id: "196855",

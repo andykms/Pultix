@@ -71,7 +71,7 @@ export type TFees = {
 }
 
 export interface TFilmApi {
-  id: string;
+  id: number;
   name: string|null;
   alternativeName: string|null;
   rating: TRatingApi;

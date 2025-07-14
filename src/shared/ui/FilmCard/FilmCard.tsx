@@ -2,15 +2,18 @@ import type { FilmCardProps } from "./type";
 import styles from "./FilmCard.module.scss";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
+import { useLocation } from "react-router-dom";
 
 export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
   const { _id, posterUrl, title, raiting, year, isArticle, width, onClick } =
     props;
+  const location = useLocation();
 
   return (
     <div className={styles.filmCard} style={width ? { width } : {}}>
       <Link
         to={`/films/${_id}`}
+        state={{background: location}}
         className={styles.imageContainer}
         style={isArticle ? { transform: "none" } : {}}
         onClick={() => onClick?.(props)}
@@ -45,7 +48,9 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
             {title}
           </Link>
         ) : (
-          <span className={clsx("buttonTitle", styles.title)}>{title}</span>
+        <div className={styles.title}>
+          <span className={"buttonTitle"}>{title}</span>
+        </div>
         )}
         <div className={clsx(styles.filmCardAbout, "description")}>
           <p>{raiting ? `${raiting}/10` : "Без рейтинга"}</p>

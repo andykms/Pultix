@@ -16,9 +16,10 @@ import { FilmAbout } from "../../shared/ui/FilmAbout/FilmAbout";
 import { useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import { Loader } from "../../shared/ui/Loader/Loader";
 
 export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
-  const { film, isInFavourites, onChangeFavourites } = props;
+  const { film, isInFavourites, onChangeFavourites, isLoad } = props;
   const [isOpenAddToFavourites, setIsOpenAddToFavourites] = useState(false);
 
   const navigate = useNavigate();
@@ -112,7 +113,10 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
     id: "0",
     title: "Описание",
   });
-  const fees = film.filmDistribution && film.filmDistribution.fees.length > 0 ? film.filmDistribution.fees || [] : [];
+  const fees =
+    film.filmDistribution && film.filmDistribution.fees.length > 0
+      ? film.filmDistribution.fees || []
+      : [];
 
   if (film.filmDistribution && film.filmDistribution.fees.length > 0) {
     tabs.push({
@@ -148,6 +152,13 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
       title: "Похожие",
     });
   }
+  if (isLoad) {
+    return (
+      <section className={styles.loading}>
+        <Loader></Loader>
+      </section>
+    );
+  }
 
   return (
     <section className={styles.filmPage}>
@@ -155,8 +166,8 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
         <ButtonClose onClose={() => navigate(-1)}></ButtonClose>
       </div>
       <div
-        className={clsx(styles.film, !film.posterUrl && styles.noImage)}
-        style={{ backgroundImage: `url(${film.posterUrl})` }}
+        className={clsx(styles.film, !film.posterUrl ? styles.noImage: null)}
+        style={film.posterUrl ? { backgroundImage: `url(${film.posterUrl})` }: {}}
       >
         <div className={styles.filmAboutContainer}>
           <FilmAbout {...{ ...film, description: "" }}></FilmAbout>

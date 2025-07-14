@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  block-size: 85%;
+  block-size: 80%;
   inline-size: 100%;
   align-self: center;
   transition: transform 0.3s ease-in-out;
@@ -62,11 +62,6 @@
   overflow: hidden;
 }
 
-.title::after {
-  content: "...";
-  color: var(--main-text-color);
-  font-size: var(--medium-font-size);
-}
 
 .titleContainer a {
   color: var(--main-text-color);

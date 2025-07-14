@@ -76,8 +76,6 @@ export const Movies = () => {
 
   /**Коллбэк при нажатии на кнопку  применения фильтров*/
   const onSubmit = (values: TValue[], ranges: TRange[]) => {
-    console.log("VALUES", values);
-    console.log("RANGES", ranges);
     /**Сначала очищаем все фильмы из хранилища */
     dispatch(clearFilms());
     /**Преобразовываем полученные из формы (окно филтьтров) значения */
@@ -133,7 +131,6 @@ export const Movies = () => {
   /**Проставляем в слайс текущий фильм при переходе на страницу фильма */
 
   const onClickLink = (film: TFilm) => {
-    console.log('set new current film!')
     dispatch(setCurrentFilm(film));
   }
 

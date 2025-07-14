@@ -20,11 +20,12 @@ export const Favorites = () => {
   const hasMore = useSelector(getHasMore);
 
   useEffect(() => {
-    dispatch(getFavoritesIdsThunk());
-    dispatch(
-      getFavouritesFilmsThunk({ favorites, allFavouritesIds: favoriteIds })
-    );
-  }, [dispatch]);
+    if (favorites.length < favoriteIds.length) {
+      dispatch(
+        getFavouritesFilmsThunk({ favorites, allFavouritesIds: favoriteIds })
+      );
+    }
+  }, [dispatch, favoriteIds]);
 
   const onNext = () => {
     dispatch(
@@ -34,6 +35,7 @@ export const Favorites = () => {
 
   return (
     <FavoritesPage
+      countFavorites={favoriteIds.length}
       favorites={favorites}
       infiniteScrollProps={{
         dataLength: favorites.length,

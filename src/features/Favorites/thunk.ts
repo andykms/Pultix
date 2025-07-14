@@ -43,7 +43,6 @@ export const getFavouritesFilmsThunk = createAsyncThunk(
     data.allFavouritesIds.forEach((id: string)=>{
       allFavoritesIdsHashed.add(id);
     });
-
     data.favorites.forEach((item)=>{
       if(allFavoritesIdsHashed.has(item._id)) {
         allFavoritesIdsHashed.delete(item._id);
@@ -51,11 +50,12 @@ export const getFavouritesFilmsThunk = createAsyncThunk(
     });
 
     const requiredToAddFavorites = Array.from(allFavoritesIdsHashed);
-
     let index = 0;
 
+    
     for (const id of requiredToAddFavorites) {
-      getFilmById(id).then(film => result.push(film));
+      const film = await getFilmById(id);
+      result.push(film);
       index +=1;
       if(index >= 50) {
         break;

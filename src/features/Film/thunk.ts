@@ -28,7 +28,7 @@ export const getFilmsThunk = createAsyncThunk(
 export const getShowCaseFilmsThunk = createAsyncThunk(
   'film/getShowCaseFilms',
   async () => {
-    const response = await getFilms(10);
+    const response = await getFilms(50);
     return response;
   }
 )

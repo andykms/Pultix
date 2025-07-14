@@ -7,8 +7,15 @@ import { forwardRef } from "react";
 
 export const GalleryDemo: React.FC<GalleryDemoProps> = forwardRef(
   (props: GalleryDemoProps, ref?: React.ForwardedRef<HTMLDivElement>) => {
-    const { CardType, cardProps, title, to, maxCount, isWithoutButtonAll } =
-      props;
+    const {
+      CardType,
+      cardProps,
+      title,
+      to,
+      maxCount,
+      isWithoutButtonAll,
+      emptyMessage,
+    } = props;
     const cutCardProps: React.ComponentProps<React.ElementType> =
       cardProps.slice(0, maxCount ? maxCount : 3);
     return (
@@ -27,9 +34,13 @@ export const GalleryDemo: React.FC<GalleryDemoProps> = forwardRef(
             </Link>
           )}
         </div>
-        <div className={styles.gallery}>
-          <Gallery CardType={CardType} CardProps={cutCardProps}></Gallery>
-        </div>
+        {cutCardProps.length > 0 ? (
+          <div className={styles.gallery}>
+            <Gallery CardType={CardType} CardProps={cutCardProps}></Gallery>
+          </div>
+        ) : (
+          <div className={styles.emptyMessage}>{emptyMessage}</div>
+        )}
       </section>
     );
   }

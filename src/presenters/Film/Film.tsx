@@ -7,6 +7,7 @@ import { getIsLoading } from "../../features/Film/FilmSlice";
 import { Loader } from "../../shared/ui/Loader/Loader";
 import { postFavoriteIdThunk } from "../../features/Favorites/thunk";
 import { deleteFavouriteIdThunk } from "../../features/Favorites/thunk";
+import { useState } from "react";
 
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -18,7 +19,15 @@ export const Film = () => {
   const isLoad = useSelector(getIsLoading);
   const favoriteIds = useSelector(getFavouritesIds);
 
-  const isInFavorites = favoriteIds.some((id) => id === currentFilm?._id);
+  const [isInFavourites, setIsInFavourites] = useState(false);
+
+  useEffect(()=>{
+    if(favoriteIds.some((item)=> item.toString() == currentFilm?._id.toString())) {
+      setIsInFavourites(true);
+    } else {
+      setIsInFavourites(false);
+    }
+  }, [favoriteIds, currentFilm])
 
   const { id } = useParams();
 
@@ -29,7 +38,7 @@ export const Film = () => {
   }, [dispatch, id]);
 
   const onChangeFavourites = (id: string) => {
-    if (favoriteIds.some((favId) => id === favId)) {
+    if (favoriteIds.some((favId) => id.toString() == favId.toString())) {
       dispatch(deleteFavouriteIdThunk(id));
     } else {
       dispatch(postFavoriteIdThunk(id));
@@ -39,11 +48,12 @@ export const Film = () => {
   if (isLoad) {
     return <Loader></Loader>;
   }
-
+  console.log(favoriteIds)
   return currentFilm ? (
     <FilmPage
+      isLoad={isLoad}
       film={currentFilm}
-      isInFavourites={isInFavorites}
+      isInFavourites={isInFavourites}
       onChangeFavourites={onChangeFavourites}
     ></FilmPage>
   ) : (

@@ -5,4 +5,5 @@ export interface GalleryDemoProps {
   to: string;
   maxCount? : number;
   isWithoutButtonAll?: boolean
+  emptyMessage?: React.ReactNode
 }

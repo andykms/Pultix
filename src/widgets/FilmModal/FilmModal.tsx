@@ -26,7 +26,7 @@ export const FilmModal: React.FC<FilmModalProps> = (props: FilmModalProps) => {
           <FilmAbout {...film}></FilmAbout>
           <div className={styles.navigation}>
             <Link
-              to={`/film/${film._id}/detailed`}
+              to={`/films/detail/${film._id}`}
               className={styles.buttonLink}
             >
               <ButtonUI type="primary" width="100%">
@@ -36,7 +36,7 @@ export const FilmModal: React.FC<FilmModalProps> = (props: FilmModalProps) => {
             <ButtonFavourite
               onClick={() => {
                 isInFavourites
-                  ? onChangeInFavourites()
+                  ? onChangeInFavourites(film._id)
                   : setIsOpenModalFavourites(true);
               }}
               isInFavourites={isInFavourites}
