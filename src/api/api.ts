@@ -43,6 +43,21 @@ export function getFilmsBySearchParams(
     .then((response) => response.docs);
 }
 
+export function getFilmsByName(
+  search: string,
+  limit: number,
+): Promise<TFilmApi[]> {
+  let resultUrl = `${apiSearchUrl}?query=${search}&limit=${limit}`;
+  return fetch(resultUrl, {
+    method: "GET",
+    headers: {
+      "X-API-KEY": apiKey,
+    },
+  })
+    .then((response) => checkResponse<TFilmApiLimitReposponse>(response))
+    .then((response) => response.docs);
+}
+
 export const postFavouriteId = (id: string) => {
   if (localStorage.getItem("favourite") === null) {
     localStorage.setItem("favourite", id);

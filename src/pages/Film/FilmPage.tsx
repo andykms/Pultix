@@ -112,9 +112,9 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
     id: "0",
     title: "Описание",
   });
-  const fees = film.filmDistribution ? film.filmDistribution.fees || [] : [];
+  const fees = film.filmDistribution && film.filmDistribution.fees.length > 0 ? film.filmDistribution.fees || [] : [];
 
-  if (film.filmDistribution) {
+  if (film.filmDistribution && film.filmDistribution.fees.length > 0) {
     tabs.push({
       id: "1",
       title: "Прокат",
@@ -194,64 +194,78 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
           portalId="filmPage"
         ></Tabs>
         <div className={styles.currentBlock}>
-        <div className={styles.oneBlock}>
-          <span ref={titleFilmAboutRef} className="big-title">Описание</span>
-          <FilmAboutDetail {...film} {...{ ref: filmAboutRef }} />
-        </div>
-        <div className={styles.oneBlock}>
-          <span ref={titleBudgetInfoRef} className="big-title">Прокат</span>
-          <BudgetInfo
-            {...{ ...film.filmDistribution, fees, ref: budgetInfoRef }}
-          ></BudgetInfo>
-        </div>
-        {film.facts && (
           <div className={styles.oneBlock}>
-            <span ref={titleFilmFactsRef} className="big-title">Факты</span>
-            <FilmFactsList facts={film.facts} {...{ ref: filmFactsRef }} />
+            <span ref={titleFilmAboutRef} className="big-title">
+              Описание
+            </span>
+            <FilmAboutDetail {...film} {...{ ref: filmAboutRef }} />
           </div>
-        )}
-        {film.actors && (
-          <div className={styles.oneBlock}>
-            <span ref={titleFilmActorsRef} className="big-title">Актёры</span>
-            <GalleryDemo
-              title=""
-              to=""
-              isWithoutButtonAll={true}
-              CardType={ActorCard}
-              cardProps={film.actors}
-              maxCount={film.actors.length}
-              {...{ ref: filmActorsRef }}
-            ></GalleryDemo>
-          </div>
-        )}
-        {film.filmCrew && (
-          <div className={styles.oneBlock}>
-            <span ref={titleFilmCrewRef} className="big-title">Съёмочная группа</span>
-            <GalleryDemo
-              title=""
-              to=""
-              isWithoutButtonAll={true}
-              CardType={ActorCard}
-              cardProps={film.filmCrew}
-              maxCount={film.filmCrew.length}
-              {...{ ref: filmCrewRef }}
-            ></GalleryDemo>
-          </div>
-        )}
-        {film.similarMovies && (
-          <div className={styles.oneBlock}>
-            <span ref={titleSimilarMoviesRef} className="big-title">Похожие</span>
-            <GalleryDemo
-              title=""
-              to=""
-              isWithoutButtonAll={true}
-              CardType={FilmCardUI}
-              cardProps={film.similarMovies}
-              maxCount={film.similarMovies.length}
-              {...{ ref: similarMoviesRef }}
-            ></GalleryDemo>
-          </div>
-        )}
+          {film.filmDistribution && film.filmDistribution.fees.length > 0 && (
+            <div className={styles.oneBlock}>
+              <span ref={titleBudgetInfoRef} className="big-title">
+                Прокат
+              </span>
+              <BudgetInfo
+                {...{ ...film.filmDistribution, fees, ref: budgetInfoRef }}
+              ></BudgetInfo>
+            </div>
+          )}
+          {film.facts && film.facts.length > 0 && (
+            <div className={styles.oneBlock}>
+              <span ref={titleFilmFactsRef} className="big-title">
+                Факты
+              </span>
+              <FilmFactsList facts={film.facts} {...{ ref: filmFactsRef }} />
+            </div>
+          )}
+          {film.actors && film.actors.length > 0 && (
+            <div className={styles.oneBlock}>
+              <span ref={titleFilmActorsRef} className="big-title">
+                Актёры
+              </span>
+              <GalleryDemo
+                title=""
+                to=""
+                isWithoutButtonAll={true}
+                CardType={ActorCard}
+                cardProps={film.actors}
+                maxCount={film.actors.length}
+                {...{ ref: filmActorsRef }}
+              ></GalleryDemo>
+            </div>
+          )}
+          {film.filmCrew && film.filmCrew.length > 0 && (
+            <div className={styles.oneBlock}>
+              <span ref={titleFilmCrewRef} className="big-title">
+                Съёмочная группа
+              </span>
+              <GalleryDemo
+                title=""
+                to=""
+                isWithoutButtonAll={true}
+                CardType={ActorCard}
+                cardProps={film.filmCrew}
+                maxCount={film.filmCrew.length}
+                {...{ ref: filmCrewRef }}
+              ></GalleryDemo>
+            </div>
+          )}
+          {film.similarMovies && film.similarMovies.length > 0 && (
+            <div className={styles.oneBlock}>
+              <span ref={titleSimilarMoviesRef} className="big-title">
+                Похожие
+              </span>
+              <GalleryDemo
+                title=""
+                to=""
+                isWithoutButtonAll={true}
+                CardType={FilmCardUI}
+                cardProps={film.similarMovies}
+                maxCount={film.similarMovies.length}
+                {...{ ref: similarMoviesRef }}
+              ></GalleryDemo>
+            </div>
+          )}
         </div>
       </div>
       {isOpenAddToFavourites && (

@@ -5,4 +5,5 @@ import type { TInfiniteScrollProps } from "../../widgets/GalleryInfinite/type";
 export interface SearchPageProps {
   films: FilmCardProps[];
   infiniteScrollProps: TInfiniteScrollProps;
+  searchValue: string;
 }

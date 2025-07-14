@@ -116,7 +116,7 @@ export const MoviesPage: React.FC<MoviesPageProps> = (
         <Link to="/" style={{ textDecoration: "none" }}>
           <ButtonBack onClose={() => {}}></ButtonBack>
         </Link>
-        <SearchField></SearchField>
+        <SearchField searchValue=""></SearchField>
         <Filter
           onSubmit={onSubmit}
           width="300px"

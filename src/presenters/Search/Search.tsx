@@ -22,11 +22,20 @@ export const Search = () => {
 
   const hasMore = useSelector(getHasMoreSearched);
 
+
   useEffect(() => {
+    console.log('cleared')
     dispatch(clearSearchingFilms());
     setCurrentQuery(searchParams.get("query"));
+  }, [dispatch, searchParams]);
+
+
+  useEffect(()=>{
     if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
-  }, [dispatch]);
+    return ()=>{
+
+    }
+  }, [currentQuery])
 
   const onNext = () => {
     if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
@@ -34,6 +43,7 @@ export const Search = () => {
 
   return (
     <SearchPage
+      searchValue={currentQuery ? currentQuery : ""}
       films={films}
       infiniteScrollProps={{
         loader: <Loader></Loader>,

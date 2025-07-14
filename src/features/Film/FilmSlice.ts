@@ -110,6 +110,7 @@ export const filmSlice = createSlice({
     builder.addCase(getShowCaseFilmsThunk.fulfilled, (state, action) => {
       state.error = false;
       state.loading = false;
+      state.showCaseFilms = [];
       action.payload.forEach((filmApi) => {
         state.showCaseFilms.push(moveToFilmViewType(filmApi));
       });
@@ -152,6 +153,9 @@ export const filmSlice = createSlice({
     getHasMoreSearched: (state) => {
       return state.hasMoreSearched;
     },
+    getIsLoading: (state) => {
+      return state.loading;
+    }
   },
 });
 
@@ -168,6 +172,7 @@ export const {
   getHasMore,
   getHasMoreSearched,
   getSearchFilms,
+  getIsLoading
 } = filmSlice.selectors;
 
 export const filmReducer = filmSlice.reducer;

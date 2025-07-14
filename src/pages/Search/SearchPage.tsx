@@ -10,7 +10,7 @@ import { ButtonBack } from "../../shared/ui/ButtonBack/ButtonBack";
 export const SearchPage: React.FC<SearchPageProps> = (
   props: SearchPageProps
 ) => {
-  const { films, infiniteScrollProps } = props;
+  const { films, infiniteScrollProps, searchValue } = props;
 
   return (
     <div className={styles.movieContainer}>

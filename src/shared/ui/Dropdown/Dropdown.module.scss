@@ -28,7 +28,7 @@
   block-size: 300px;
   background-color: var(--widgets-color);
   inline-size: 300px;
-  inset-inline-end: 0;
+  inset-inline-end: calc(-150px + 50%);
   animation: 0.3s ease-in-out up;
   overflow-y: scroll;
   overflow-x: hidden;

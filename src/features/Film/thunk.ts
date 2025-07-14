@@ -1,6 +1,5 @@
-import { getFilmById, getFilms, getFilmsBySearchParams, } from "../../api/api";
+import { getFilmById, getFilms, getFilmsBySearchParams, getFilmsByName} from "../../api/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { TFilm } from "../../types/views/RegistrationPage";
 
 export const getFilmsBySearchThunk = createAsyncThunk(
   "film/getFilmsBySearch",
@@ -37,7 +36,7 @@ export const getShowCaseFilmsThunk = createAsyncThunk(
 export const getSearchFilmsThunk = createAsyncThunk(
   'film/getSearchFilms',
   async (query: string) => {
-    const response = await getFilmsBySearchParams(`search?query=${query}`, 50);
+    const response = await getFilmsByName(query, 50);
     return response;
   } 
 )

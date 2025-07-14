@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useState, type FormEvent } from "react";
 import { ButtonUI } from "../../shared/ui/Button/Button";
 
-export const SearchField = () => {
-  const [value, setValue] = useState("");
+
+export const SearchField = (props: {searchValue: string}) => {
+  const [value, setValue] = useState(props.searchValue);
 
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ export const SearchField = () => {
 
   const onSubmit = (e: FormEvent)=>{
     e.preventDefault();
-    navigate(`/search?query=${value}`);
+    if(value.length > 0) navigate(`/search?query=${value}`);
   }
 
   return (

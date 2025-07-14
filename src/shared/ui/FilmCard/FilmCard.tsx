@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 import clsx from "clsx";
 
 export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
-  const { _id, posterUrl, title, raiting, year, isArticle, width } = props;
+  const { _id, posterUrl, title, raiting, year, isArticle, width, onClick } =
+    props;
 
   return (
     <div className={styles.filmCard} style={width ? { width } : {}}>
       <Link
-        to={`/film/${_id}`}
+        to={`/films/${_id}`}
         className={styles.imageContainer}
         style={isArticle ? { transform: "none" } : {}}
+        onClick={() => onClick?.(props)}
       >
         {posterUrl ? (
           <img src={posterUrl} alt={`Постер к фильму ${title}`} />
@@ -34,15 +36,17 @@ export const FilmCardUI: React.FC<FilmCardProps> = (props: FilmCardProps) => {
         )}
       </Link>
       <div className={styles.filmCardInfo}>
-        <div className={styles.titleContainer}>
-          {!isArticle ? (
-            <Link className={"title"} to={`/film/${_id}`}>
-              {title}
-            </Link>
-          ) : (
-            <span className="buttonTitle">{title}</span>
-          )}
-        </div>
+        {!isArticle ? (
+          <Link
+            className={"title"}
+            to={`/films/${_id}`}
+            onClick={() => onClick?.(props)}
+          >
+            {title}
+          </Link>
+        ) : (
+          <span className={clsx("buttonTitle", styles.title)}>{title}</span>
+        )}
         <div className={clsx(styles.filmCardAbout, "description")}>
           <p>{raiting ? `${raiting}/10` : "Без рейтинга"}</p>
           <p>{year ? year : ""}</p>

@@ -1,0 +1,19 @@
+.movieContainer {
+  inline-size: 100%;
+}
+
+.navigation {
+  block-size: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  inset-inline-start: 0;
+  padding: 15px;
+  inline-size: calc(100% - 30px);
+}
+
+.films {
+  padding-block-start: 100px;
+}

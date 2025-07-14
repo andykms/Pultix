@@ -20,6 +20,8 @@ export const FilmAboutDetail: React.FC<FilmAboutDetailProps> = forwardRef(({
   const minutes =movieLength? movieLength % 60:undefined;
   const movieLengthString = hours&&hours ? `${hours > 0 ? `${hours} ч ` : ""}${minutes} мин`: undefined;
 
+  console.log(year)
+
   return (
     <section className={styles.filmAbout} ref={ref}>
       <div className={styles.titleContainer}>

@@ -1,11 +1,6 @@
 import type { TInfiniteScrollProps } from "../../widgets/GalleryInfinite/type";
 import type { FilmCardProps } from "../../shared/ui/FilmCard/type";
-import type {
-  TInputs,
-  TDropdowns,
-  TNumberInputs,
-  TDropdownsWithScroll,
-} from "../../widgets/Filter/type";
+import type { TFilm } from "../../types/views/RegistrationPage";
 
 export type TRange = {
   id: string;

@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { ButtonUI } from "../../shared/ui/Button/Button";
-
+import { SearchField } from "../SearchField/SearchField";
 
 export const Header = (props: {isAuth: boolean, userPhoto?: string}) => {
   const { isAuth } = props;

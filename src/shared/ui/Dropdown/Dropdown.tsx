@@ -28,7 +28,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             height="30px"
             viewBox="0 0 64 64"
             xmlns="http://www.w3.org/2000/svg"
-            stroke-width="3"
+            strokeWidth="3"
             stroke="var(--main-text-color)"
           >
             <polyline points="6.53 18.86 33.16 44.12 57.42 18.86" />

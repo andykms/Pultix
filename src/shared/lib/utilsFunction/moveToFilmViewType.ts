@@ -5,10 +5,10 @@ export function moveToFilmViewType(filmApi: TFilmApi): TFilm {
   const fees = [];
 
   if(filmApi.fees) {
-    if(filmApi.fees.russia) {
+    if(filmApi.fees.russia?.value) {
       fees.push({...filmApi.fees.russia, country: 'Россия'});
     }
-    if(filmApi.fees.world) {
+    if(filmApi.fees.world?.value) {
       fees.push({...filmApi.fees.world, country: 'Мир'});
     }
   }

@@ -16,15 +16,13 @@ import { SEARCH_PARAMS, SEARCH_OPERATIONS } from "../../api/apiSearchParams";
 import { useState } from "react";
 import { useEffect } from "react";
 import { genres } from "../../shared/lib/utilsData/genres";
+import type { TFilm } from "../../types/views/RegistrationPage";
+import { setCurrentFilm } from "../../features/Film/FilmSlice";
 
 export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    addFilms();
-  }, [dispatch]);
 
   /**id для сопоставления значений из формы и требуемых нам значений */
   const ids = {
@@ -61,21 +59,19 @@ export const Movies = () => {
   };
 
   /**Стейт текущего url */
-  const [currentSearchUrl, setCurrentSearchUrl] = useState<string>(
-    getParamUrl()
-  );
 
-  useEffect(() => {
+  useEffect(()=>{
+    dispatch(clearFilms())
     dispatch(
-      getFilmsBySearchThunk({ searchParams: currentSearchUrl, limit: 50 })
+      getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 })
     );
-    addFilms();
-  }, [currentSearchUrl]);
+  }, [searchParams])
+
 
   /**Функция отправки экшена для подзагрузки фильмов*/
   const addFilms = () =>
     dispatch(
-      getFilmsBySearchThunk({ searchParams: currentSearchUrl, limit: 50 })
+      getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 })
     );
 
   /**Коллбэк при нажатии на кнопку  применения фильтров*/
@@ -120,9 +116,6 @@ export const Movies = () => {
     setSearchParams(searchParams);
 
     /**Обновляем стейт текущего url */
-    const newUrl = getParamUrl();
-    console.log("NEW URL", newUrl);
-    setCurrentSearchUrl(newUrl);
   };
 
   /**Получение фильмов */
@@ -134,13 +127,19 @@ export const Movies = () => {
 
   /**Коллбэк для бесконечного скролла */
   const onNext = () => {
-    console.log("next");
     addFilms();
   };
 
+  /**Проставляем в слайс текущий фильм при переходе на страницу фильма */
+
+  const onClickLink = (film: TFilm) => {
+    console.log('set new current film!')
+    dispatch(setCurrentFilm(film));
+  }
+
   return (
     <MoviesPage
-      films={films}
+      films={films.map((item)=> {return {...item, onClick: onClickLink}})}
       ids={ids}
       infiniteScrollProps={{
         hasMore: hasMore,

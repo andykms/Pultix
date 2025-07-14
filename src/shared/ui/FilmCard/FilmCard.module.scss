@@ -56,10 +56,16 @@
   inline-size: 100%;
 }
 
-.titleContainer {
+.title {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.title::after {
+  content: "...";
+  color: var(--main-text-color);
+  font-size: var(--medium-font-size);
 }
 
 .titleContainer a {
@@ -69,7 +75,7 @@
 @media (max-width: 678px) {
   .filmCard {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     inline-size: 100%;
     block-size: 200px;
   }
@@ -86,6 +92,11 @@
   .filmCardAbout {
     flex-direction: column;
     gap: 5px;
+  }
+
+  .titleContainer {
+    text-overflow: none;
+    overflow: hidden;
   }
 }
 
