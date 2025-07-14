@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { TFilm } from "../../types/views/RegistrationPage";
+import { createSlice } from '@reduxjs/toolkit';
+import type { TFilm } from '../../types/views/RegistrationPage';
 import {
   getFilmByIdThunk,
   getFilmsBySearchThunk,
   getFilmsThunk,
   getShowCaseFilmsThunk,
   getSearchFilmsThunk,
-} from "./thunk";
-import { moveToFilmViewType } from "../../shared/lib/utilsFunction/moveToFilmViewType";
+} from './thunk';
+import { moveToFilmViewType } from '../../shared/lib/utilsFunction/moveToFilmViewType';
 
 export interface FilmState {
   films: TFilm[];
@@ -32,7 +32,7 @@ const initialState: FilmState = {
 };
 
 export const filmSlice = createSlice({
-  name: "film",
+  name: 'film',
   initialState,
   reducers: {
     setCurrentFilm: (state, action) => {
@@ -155,16 +155,12 @@ export const filmSlice = createSlice({
     },
     getIsLoading: (state) => {
       return state.loading;
-    }
+    },
   },
 });
 
-export const {
-  setCurrentFilm,
-  clearFilms,
-  clearCurrentFilm,
-  clearSearchingFilms,
-} = filmSlice.actions;
+export const { setCurrentFilm, clearFilms, clearCurrentFilm, clearSearchingFilms } =
+  filmSlice.actions;
 export const {
   getCurrentFilm,
   getFilms,
@@ -172,7 +168,7 @@ export const {
   getHasMore,
   getHasMoreSearched,
   getSearchFilms,
-  getIsLoading
+  getIsLoading,
 } = filmSlice.selectors;
 
 export const filmReducer = filmSlice.reducer;

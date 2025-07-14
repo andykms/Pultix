@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { FilmFact } from "./FilmFact";
+import { FilmFact } from './FilmFact';
 
 const meta = {
-  title: "Shared/UI/FilmFact",
+  title: 'Shared/UI/FilmFact',
   component: FilmFact,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof FilmFact>;
 

@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { RaitingInfo } from "./RatingInfo";
+import { RaitingInfo } from './RatingInfo';
 
 const meta = {
-  title: "Widgets/RaitingInfo",
+  title: 'Widgets/RaitingInfo',
   component: RaitingInfo,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof RaitingInfo>;
 

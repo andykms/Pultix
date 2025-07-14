@@ -16,7 +16,7 @@
 }
 
 .value::after {
-  content: "";
+  content: '';
   display: block;
   inset-block-end: 5px;
   width: 100%;
@@ -24,7 +24,7 @@
 }
 
 .high {
-  color: green
+  color: green;
 }
 
 .medium {
@@ -32,5 +32,5 @@
 }
 
 .low {
-  color: red
+  color: red;
 }

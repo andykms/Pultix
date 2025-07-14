@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { useState } from "react";
-import { DropdownParam } from "./DropdownParam";
+import { useState } from 'react';
+import { DropdownParam } from './DropdownParam';
 
 const meta = {
-  title: "Shared/UI/DropdownParam",
+  title: 'Shared/UI/DropdownParam',
   component: DropdownParam,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof DropdownParam>;
 
@@ -17,13 +17,13 @@ type Story = StoryObj<typeof meta>;
 
 export const NotChoosen: Story = {
   render: (args) => (
-    <div style={{ width: "150px" }}>
+    <div style={{ width: '150px' }}>
       <DropdownParam {...args} />
     </div>
   ),
   args: {
     parameter: {
-      value: "Боевик",
+      value: 'Боевик',
       id: '1',
       isChoosen: false,
     },
@@ -33,13 +33,13 @@ export const NotChoosen: Story = {
 
 export const Choosen: Story = {
   render: (args) => (
-    <div style={{ width: "150px" }}>
+    <div style={{ width: '150px' }}>
       <DropdownParam {...args} />
     </div>
   ),
   args: {
     parameter: {
-      value: "Фантастика",
+      value: 'Фантастика',
       id: '1',
       isChoosen: true,
     },
@@ -55,17 +55,14 @@ export const WithState: Story = {
       isChoosen,
     };
     return (
-      <div style={{ width: "150px" }}>
-        <DropdownParam
-          parameter={parameter}
-          onChoose={() => setIsChoosen(!isChoosen)}
-        />
+      <div style={{ width: '150px' }}>
+        <DropdownParam parameter={parameter} onChoose={() => setIsChoosen(!isChoosen)} />
       </div>
     );
   },
   args: {
     parameter: {
-      value: "Фантастика",
+      value: 'Фантастика',
       id: '1',
       isChoosen: true,
     },

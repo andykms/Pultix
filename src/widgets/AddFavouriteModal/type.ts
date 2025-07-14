@@ -5,10 +5,10 @@ type TFilm = {
   raiting?: number;
   year?: number;
   isArticle?: boolean;
-}
+};
 
 export interface AddFavouriteModalProps {
-  onChangeFavourites: (id: string)=>void;
-  onCloseModal: ()=> void;
+  onChangeFavourites: (id: string) => void;
+  onCloseModal: () => void;
   film: TFilm;
 }

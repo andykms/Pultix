@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { ActorCard } from "./ActorCard";
+import { ActorCard } from './ActorCard';
 
 const meta = {
-  title: "Shared/UI/ActorCard",
+  title: 'Shared/UI/ActorCard',
   component: ActorCard,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof ActorCard>;
 
@@ -17,10 +17,9 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   render: (args) => <ActorCard {...args} />,
   args: {
-    _id: "3432423",
-    photoUrl: "https://st.kp.yandex.net/images/actor_iphone/iphone360_6317.jpg",
-    name: "Пол Уокер",
-    description:
-      "Пол Уильям Уокер IV (англ. Paul William Walker IV) — американский киноактёр",
+    _id: '3432423',
+    photoUrl: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_6317.jpg',
+    name: 'Пол Уокер',
+    description: 'Пол Уильям Уокер IV (англ. Paul William Walker IV) — американский киноактёр',
   },
 };

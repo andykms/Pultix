@@ -1,23 +1,19 @@
-import { MoviesPage } from "../../pages/Movies/MoviesPage";
-import { useDispatch, useSelector } from "../../services/store";
-import { useSearchParams } from "react-router-dom";
-import type { TValue, TRange } from "../../pages/Movies/type";
-import {
-  clearFilms,
-  getHasMore,
-  getFilms,
-} from "../../features/Film/FilmSlice";
-import { getFilmsBySearchThunk } from "../../features/Film/thunk";
-import { type TSearchParam, createSearchUrl } from "../../api/apiSearchParams";
-import { Loader } from "../../shared/ui/Loader/Loader";
+import { MoviesPage } from '../../pages/Movies/MoviesPage';
+import { useDispatch, useSelector } from '../../services/store';
+import { useSearchParams } from 'react-router-dom';
+import type { TValue, TRange } from '../../pages/Movies/type';
+import { clearFilms, getHasMore, getFilms } from '../../features/Film/FilmSlice';
+import { getFilmsBySearchThunk } from '../../features/Film/thunk';
+import { type TSearchParam, createSearchUrl } from '../../api/apiSearchParams';
+import { Loader } from '../../shared/ui/Loader/Loader';
 
 /**Импортируем ключи для searchParams (genre.names...) */
-import { SEARCH_PARAMS, SEARCH_OPERATIONS } from "../../api/apiSearchParams";
-import { useState } from "react";
-import { useEffect } from "react";
-import { genres } from "../../shared/lib/utilsData/genres";
-import type { TFilm } from "../../types/views/RegistrationPage";
-import { setCurrentFilm } from "../../features/Film/FilmSlice";
+import { SEARCH_PARAMS, SEARCH_OPERATIONS } from '../../api/apiSearchParams';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { genres } from '../../shared/lib/utilsData/genres';
+import type { TFilm } from '../../types/views/RegistrationPage';
+import { setCurrentFilm } from '../../features/Film/FilmSlice';
 
 export const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,9 +22,9 @@ export const Movies = () => {
 
   /**id для сопоставления значений из формы и требуемых нам значений */
   const ids = {
-    yearId: "year",
-    ratingId: "rating",
-    genreId: "genre",
+    yearId: 'year',
+    ratingId: 'rating',
+    genreId: 'genre',
   };
 
   /**Возвращение url из searchParameters */
@@ -60,19 +56,14 @@ export const Movies = () => {
 
   /**Стейт текущего url */
 
-  useEffect(()=>{
-    dispatch(clearFilms())
-    dispatch(
-      getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 })
-    );
-  }, [searchParams])
-
+  useEffect(() => {
+    dispatch(clearFilms());
+    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 }));
+  }, [searchParams]);
 
   /**Функция отправки экшена для подзагрузки фильмов*/
   const addFilms = () =>
-    dispatch(
-      getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 })
-    );
+    dispatch(getFilmsBySearchThunk({ searchParams: getParamUrl(), limit: 50 }));
 
   /**Коллбэк при нажатии на кнопку  применения фильтров*/
   const onSubmit = (values: TValue[], ranges: TRange[]) => {
@@ -87,9 +78,7 @@ export const Movies = () => {
           if (!searchParams[SEARCH_PARAMS.GENRE]) {
             searchParams[SEARCH_PARAMS.GENRE] = [];
           }
-          searchParams[SEARCH_PARAMS.GENRE].push(
-            `${SEARCH_OPERATIONS.INCLUDE}${value}`
-          );
+          searchParams[SEARCH_PARAMS.GENRE].push(`${SEARCH_OPERATIONS.INCLUDE}${value}`);
           break;
       }
     });
@@ -132,11 +121,13 @@ export const Movies = () => {
 
   const onClickLink = (film: TFilm) => {
     dispatch(setCurrentFilm(film));
-  }
+  };
 
   return (
     <MoviesPage
-      films={films.map((item)=> {return {...item, onClick: onClickLink}})}
+      films={films.map((item) => {
+        return { ...item, onClick: onClickLink };
+      })}
       ids={ids}
       infiniteScrollProps={{
         hasMore: hasMore,

@@ -1,5 +1,5 @@
-import type { InputProps } from "./type";
-import styles from "./Input.module.scss";
+import type { InputProps } from './type';
+import styles from './Input.module.scss';
 
 export const InputUI = ({
   onChange,
@@ -13,15 +13,15 @@ export const InputUI = ({
   maxValue,
   minValue,
   type,
-  step
+  step,
 }: InputProps) => {
   return (
-    <div className={styles.inputContainer} style={{width}}>
-      <span className={"text"}>{title}</span>
+    <div className={styles.inputContainer} style={{ width }}>
+      <span className={'text'}>{title}</span>
       <label className={styles.label} style={{ width: '100%' }}>
         <input
           className={styles.input}
-          type={type? type: 'text'}
+          type={type ? type : 'text'}
           onChange={onChange}
           value={value}
           placeholder={placeholder}

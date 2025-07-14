@@ -63,15 +63,15 @@
 }
 
 .film::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: inherit;
-    background: linear-gradient(rgba(0, 0, 0, 0.3));
-    z-index: 0;
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background: linear-gradient(rgba(0, 0, 0, 0.3));
+  z-index: 0;
 }
 
 @media (max-width: 876px) {

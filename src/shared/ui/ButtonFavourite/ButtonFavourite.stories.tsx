@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { useState } from "react";
-import { ButtonFavourite } from "./ButtonFavourite";
+import { useState } from 'react';
+import { ButtonFavourite } from './ButtonFavourite';
 
 const meta = {
-  title: "Shared/UI/ButtonFavourite",
+  title: 'Shared/UI/ButtonFavourite',
   component: ButtonFavourite,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof ButtonFavourite>;
 

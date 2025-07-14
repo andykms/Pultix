@@ -22,8 +22,7 @@
   --text-dropdown-height: clamp(10.625rem, 7.324rem + 14.085vw, 20rem);
   --text-dropdown-height-min: clamp(3.125rem, 2.025rem + 4.695vw, 6.25rem);
   --film-content-background: #101010;
-} 
-
+}
 
 html,
 div,
@@ -105,12 +104,12 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
-	padding: 0;
-	font: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
-	border: 0;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -126,41 +125,41 @@ hgroup,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font: inherit;
-	font-size: 100%;
-	line-height: 1;
-	vertical-align: baseline;
-	border: 0;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  line-height: 1;
+  vertical-align: baseline;
+  border: 0;
   box-sizing: border-box;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
@@ -189,7 +188,8 @@ body {
   color: var(--description-text-color);
 }
 
-.text, .textHovered {
+.text,
+.textHovered {
   font-size: var(--mini-font-size);
   color: var(--main-text-color);
 }
@@ -209,4 +209,3 @@ body {
   font-size: var(--mega-font-size);
   color: var(--main-text-color);
 }
-

@@ -38,11 +38,11 @@
   object-fit: cover;
 }
 
-.leave[data-direction="left"] {
+.leave[data-direction='left'] {
   animation: leaveToLeft 0.8s forwards cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.enter[data-direction="left"] {
+.enter[data-direction='left'] {
   animation: enterFromRight 0.8s forwards cubic-bezier(0.65, 0, 0.35, 1);
 }
 

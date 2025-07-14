@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from "../../services/store";
-import { MainPage } from "../../pages/Main/MainPage";
-import { getShowCaseFilmsThunk } from "../../features/Film/thunk";
-import { getFavouritesFilmsThunk } from "../../features/Favorites/thunk";
-import { getShowcaseFavourites } from "../../features/Favorites/FavoritesSlice";
-import { getShowcaseFilms } from "../../features/Film/FilmSlice";
-import { getFavouritesIds } from "../../features/Favorites/FavoritesSlice";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from '../../services/store';
+import { MainPage } from '../../pages/Main/MainPage';
+import { getShowCaseFilmsThunk } from '../../features/Film/thunk';
+import { getFavouritesFilmsThunk } from '../../features/Favorites/thunk';
+import { getShowcaseFavourites } from '../../features/Favorites/FavoritesSlice';
+import { getShowcaseFilms } from '../../features/Film/FilmSlice';
+import { getFavouritesIds } from '../../features/Favorites/FavoritesSlice';
+import { useEffect } from 'react';
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,12 @@ export const Main = () => {
   const favoritesIds = useSelector(getFavouritesIds);
 
   useEffect(() => {
-    console.log(favoritesIds)
+    console.log(favoritesIds);
     dispatch(
       getFavouritesFilmsThunk({
         favorites: favoritesShowcase,
         allFavouritesIds: favoritesIds,
-      })
+      }),
     );
   }, [favoritesIds]);
 
@@ -32,7 +32,5 @@ export const Main = () => {
     }
     return () => {};
   }, [dispatch]);
-  return (
-    <MainPage films={filmsShowcase} favourites={favoritesShowcase}></MainPage>
-  );
+  return <MainPage films={filmsShowcase} favourites={favoritesShowcase}></MainPage>;
 };

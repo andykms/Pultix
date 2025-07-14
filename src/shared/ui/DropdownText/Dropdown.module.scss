@@ -5,7 +5,6 @@
   position: relative;
 }
 
-
 .fullDescription {
   display: flex;
   overflow: hidden;
@@ -28,9 +27,8 @@
   overflow: hidden;
   block-size: var(--text-dropdown-height-min);
   inline-size: 300px;
-  background: linear-gradient(rgba(0, 0, 0,0) 60%, rgba(0, 0, 0, 0.6) );
+  background: linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6));
 }
-
 
 @keyframes down {
   from {

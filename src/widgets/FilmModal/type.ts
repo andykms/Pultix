@@ -10,10 +10,10 @@ export type TFilm = {
   ageRaiting?: number;
   countries?: string[];
   movieLength?: number;
-}
+};
 
 export interface FilmModalProps {
-  film: TFilm
-  onChangeInFavourites: (id: string)=>void;
+  film: TFilm;
+  onChangeInFavourites: (id: string) => void;
   isInFavourites: boolean;
 }

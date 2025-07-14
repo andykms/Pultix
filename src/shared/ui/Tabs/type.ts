@@ -1,7 +1,7 @@
 export type TTab = {
   id: string;
   title: string;
-}
+};
 
 export interface TabsProps {
   tabs: TTab[];

@@ -3,7 +3,7 @@ export interface GalleryDemoProps {
   cardProps: React.ComponentProps<React.ElementType>[];
   title: string;
   to: string;
-  maxCount? : number;
-  isWithoutButtonAll?: boolean
-  emptyMessage?: React.ReactNode
+  maxCount?: number;
+  isWithoutButtonAll?: boolean;
+  emptyMessage?: React.ReactNode;
 }

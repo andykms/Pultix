@@ -1,22 +1,22 @@
-import styles from "./FilmPage.module.scss";
-import type { FilmPageProps } from "./type";
-import { FilmAboutDetail } from "../../shared/ui/FilmAboutDetail/FilmAboutDetail";
-import { GalleryDemo } from "../../widgets/GalleryDemo/GalleryDemo";
-import { BudgetInfo } from "../../widgets/BudgetInfo/BudgetInfo";
-import { ButtonUI } from "../../shared/ui/Button/Button";
-import { AddFavouriteModal } from "../../widgets/AddFavouriteModal/AddFavouriteModal";
-import { ButtonClose } from "../../shared/ui/ButtonClose/ButtonClose";
-import { useNavigate } from "react-router-dom";
-import { Tabs } from "../../shared/ui/Tabs/Tabs";
-import { FilmCardUI } from "../../shared/ui/FilmCard/FilmCard";
-import { FilmFactsList } from "../../widgets/FilmFactsList/FilmFactsList";
-import { ActorCard } from "../../shared/ui/ActorCard/ActorCard";
-import { useEffect, useState } from "react";
-import { FilmAbout } from "../../shared/ui/FilmAbout/FilmAbout";
-import { useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import clsx from "clsx";
-import { Loader } from "../../shared/ui/Loader/Loader";
+import styles from './FilmPage.module.scss';
+import type { FilmPageProps } from './type';
+import { FilmAboutDetail } from '../../shared/ui/FilmAboutDetail/FilmAboutDetail';
+import { GalleryDemo } from '../../widgets/GalleryDemo/GalleryDemo';
+import { BudgetInfo } from '../../widgets/BudgetInfo/BudgetInfo';
+import { ButtonUI } from '../../shared/ui/Button/Button';
+import { AddFavouriteModal } from '../../widgets/AddFavouriteModal/AddFavouriteModal';
+import { ButtonClose } from '../../shared/ui/ButtonClose/ButtonClose';
+import { useNavigate } from 'react-router-dom';
+import { Tabs } from '../../shared/ui/Tabs/Tabs';
+import { FilmCardUI } from '../../shared/ui/FilmCard/FilmCard';
+import { FilmFactsList } from '../../widgets/FilmFactsList/FilmFactsList';
+import { ActorCard } from '../../shared/ui/ActorCard/ActorCard';
+import { useEffect, useState } from 'react';
+import { FilmAbout } from '../../shared/ui/FilmAbout/FilmAbout';
+import { useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import clsx from 'clsx';
+import { Loader } from '../../shared/ui/Loader/Loader';
 
 export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
   const { film, isInFavourites, onChangeFavourites, isLoad } = props;
@@ -24,7 +24,7 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
 
   const navigate = useNavigate();
 
-  const [currentTab, setCurrentTab] = useState("0");
+  const [currentTab, setCurrentTab] = useState('0');
 
   const titleFilmAboutRef = useRef<HTMLDivElement>(null);
   const titleBudgetInfoRef = useRef<HTMLDivElement>(null);
@@ -59,22 +59,22 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
 
   useEffect(() => {
     if (inViewFilmAbout) {
-      setCurrentTab("0");
+      setCurrentTab('0');
     }
     if (inViewBudgetInfo) {
-      setCurrentTab("1");
+      setCurrentTab('1');
     }
     if (inViewFilmFacts) {
-      setCurrentTab("2");
+      setCurrentTab('2');
     }
     if (inViewFilmActors) {
-      setCurrentTab("3");
+      setCurrentTab('3');
     }
     if (inViewFilmCrew) {
-      setCurrentTab("4");
+      setCurrentTab('4');
     }
     if (inViewSimilarMovies) {
-      setCurrentTab("5");
+      setCurrentTab('5');
     }
   }, [
     inViewFilmAbout,
@@ -88,30 +88,30 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
   const onClickTab = (tabId: string) => {
     setCurrentTab(tabId);
     switch (tabId) {
-      case "0":
-        titleFilmAboutRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '0':
+        titleFilmAboutRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
-      case "1":
-        titleBudgetInfoRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '1':
+        titleBudgetInfoRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
-      case "2":
-        titleFilmFactsRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '2':
+        titleFilmFactsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
-      case "3":
-        titleFilmActorsRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '3':
+        titleFilmActorsRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
-      case "4":
-        titleFilmCrewRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '4':
+        titleFilmCrewRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
-      case "5":
-        titleSimilarMoviesRef.current?.scrollIntoView({ behavior: "smooth" });
+      case '5':
+        titleSimilarMoviesRef.current?.scrollIntoView({ behavior: 'smooth' });
         break;
     }
   };
 
   tabs.push({
-    id: "0",
-    title: "Описание",
+    id: '0',
+    title: 'Описание',
   });
   const fees =
     film.filmDistribution && film.filmDistribution.fees.length > 0
@@ -120,36 +120,36 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
 
   if (film.filmDistribution && film.filmDistribution.fees.length > 0) {
     tabs.push({
-      id: "1",
-      title: "Прокат",
+      id: '1',
+      title: 'Прокат',
     });
   }
 
   if (film.facts) {
     tabs.push({
-      id: "2",
-      title: "Факты",
+      id: '2',
+      title: 'Факты',
     });
   }
 
   if (film.actors) {
     tabs.push({
-      id: "3",
-      title: "Актёры",
+      id: '3',
+      title: 'Актёры',
     });
   }
 
   if (film.filmCrew) {
     tabs.push({
-      id: "4",
-      title: "Съёмка",
+      id: '4',
+      title: 'Съёмка',
     });
   }
 
   if (film.similarMovies) {
     tabs.push({
-      id: "5",
-      title: "Похожие",
+      id: '5',
+      title: 'Похожие',
     });
   }
   if (isLoad) {
@@ -166,64 +166,55 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
         <ButtonClose onClose={() => navigate(-1)}></ButtonClose>
       </div>
       <div
-        className={clsx(styles.film, !film.posterUrl ? styles.noImage: null)}
-        style={film.posterUrl ? { backgroundImage: `url(${film.posterUrl})` }: {}}
+        className={clsx(styles.film, !film.posterUrl ? styles.noImage : null)}
+        style={film.posterUrl ? { backgroundImage: `url(${film.posterUrl})` } : {}}
       >
         <div className={styles.filmAboutContainer}>
-          <FilmAbout {...{ ...film, description: "" }}></FilmAbout>
+          <FilmAbout {...{ ...film, description: '' }}></FilmAbout>
         </div>
         <div className={styles.buttonsNavigation}>
           {film.trailerUrl && (
-            <ButtonUI type="primary" width="auto">
-              <a href={film.trailerUrl} style={{ textDecoration: "none" }}>
-                <span className="buttonTitle">Смотреть трейлер</span>
+            <ButtonUI type='primary' width='auto'>
+              <a href={film.trailerUrl} style={{ textDecoration: 'none' }}>
+                <span className='buttonTitle'>Смотреть трейлер</span>
               </a>
             </ButtonUI>
           )}
           <ButtonUI
-            type="opacity"
-            width="auto"
+            type='opacity'
+            width='auto'
             onClick={() => {
-              isInFavourites
-                ? onChangeFavourites(film._id)
-                : setIsOpenAddToFavourites(true);
+              isInFavourites ? onChangeFavourites(film._id) : setIsOpenAddToFavourites(true);
             }}
           >
             {isInFavourites ? (
-              <span className="buttonTitle">Удалить из избранного</span>
+              <span className='buttonTitle'>Удалить из избранного</span>
             ) : (
-              <span className="buttonTitle">В избранное</span>
+              <span className='buttonTitle'>В избранное</span>
             )}
           </ButtonUI>
         </div>
       </div>
       <div className={styles.blockTabs}>
-        <Tabs
-          tabs={tabs}
-          activeId={currentTab}
-          onClick={onClickTab}
-          portalId="filmPage"
-        ></Tabs>
+        <Tabs tabs={tabs} activeId={currentTab} onClick={onClickTab} portalId='filmPage'></Tabs>
         <div className={styles.currentBlock}>
           <div className={styles.oneBlock}>
-            <span ref={titleFilmAboutRef} className="big-title">
+            <span ref={titleFilmAboutRef} className='big-title'>
               Описание
             </span>
             <FilmAboutDetail {...film} {...{ ref: filmAboutRef }} />
           </div>
           {film.filmDistribution && film.filmDistribution.fees.length > 0 && (
             <div className={styles.oneBlock}>
-              <span ref={titleBudgetInfoRef} className="big-title">
+              <span ref={titleBudgetInfoRef} className='big-title'>
                 Прокат
               </span>
-              <BudgetInfo
-                {...{ ...film.filmDistribution, fees, ref: budgetInfoRef }}
-              ></BudgetInfo>
+              <BudgetInfo {...{ ...film.filmDistribution, fees, ref: budgetInfoRef }}></BudgetInfo>
             </div>
           )}
           {film.facts && film.facts.length > 0 && (
             <div className={styles.oneBlock}>
-              <span ref={titleFilmFactsRef} className="big-title">
+              <span ref={titleFilmFactsRef} className='big-title'>
                 Факты
               </span>
               <FilmFactsList facts={film.facts} {...{ ref: filmFactsRef }} />
@@ -231,12 +222,12 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
           )}
           {film.actors && film.actors.length > 0 && (
             <div className={styles.oneBlock}>
-              <span ref={titleFilmActorsRef} className="big-title">
+              <span ref={titleFilmActorsRef} className='big-title'>
                 Актёры
               </span>
               <GalleryDemo
-                title=""
-                to=""
+                title=''
+                to=''
                 isWithoutButtonAll={true}
                 CardType={ActorCard}
                 cardProps={film.actors}
@@ -247,12 +238,12 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
           )}
           {film.filmCrew && film.filmCrew.length > 0 && (
             <div className={styles.oneBlock}>
-              <span ref={titleFilmCrewRef} className="big-title">
+              <span ref={titleFilmCrewRef} className='big-title'>
                 Съёмочная группа
               </span>
               <GalleryDemo
-                title=""
-                to=""
+                title=''
+                to=''
                 isWithoutButtonAll={true}
                 CardType={ActorCard}
                 cardProps={film.filmCrew}
@@ -263,12 +254,12 @@ export const FilmPage: React.FC<FilmPageProps> = (props: FilmPageProps) => {
           )}
           {film.similarMovies && film.similarMovies.length > 0 && (
             <div className={styles.oneBlock}>
-              <span ref={titleSimilarMoviesRef} className="big-title">
+              <span ref={titleSimilarMoviesRef} className='big-title'>
                 Похожие
               </span>
               <GalleryDemo
-                title=""
-                to=""
+                title=''
+                to=''
                 isWithoutButtonAll={true}
                 CardType={FilmCardUI}
                 cardProps={film.similarMovies}

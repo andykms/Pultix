@@ -1,5 +1,5 @@
-import styles from "./Button.module.scss";
-import type { ButtonProps } from "./type";
+import styles from './Button.module.scss';
+import type { ButtonProps } from './type';
 
 export const ButtonUI: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { type, width, children, onClick, style, disabled, htmlType } = props;

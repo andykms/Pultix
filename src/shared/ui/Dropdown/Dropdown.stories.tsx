@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { useState } from "react";
-import { Dropdown } from "./Dropdown";
-import type { TParameter } from "./type";
+import { useState } from 'react';
+import { Dropdown } from './Dropdown';
+import type { TParameter } from './type';
 
 const meta = {
-  title: "Shared/UI/Dropdown",
+  title: 'Shared/UI/Dropdown',
   component: Dropdown,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof Dropdown>;
 
@@ -27,7 +27,7 @@ export const Base: Story = {
             param.isChoosen = !param.isChoosen;
           }
           return param;
-        })
+        }),
       );
     };
 
@@ -36,59 +36,58 @@ export const Base: Story = {
   args: {
     params: [
       {
-        value: "Фантастика",
+        value: 'Фантастика',
         id: '1',
         isChoosen: false,
       },
       {
-        value: "Боевик",
+        value: 'Боевик',
         id: '2',
         isChoosen: false,
       },
       {
-        value: "Триллер",
+        value: 'Триллер',
         id: '3',
         isChoosen: false,
       },
       {
-        value: "Мультфильм",
+        value: 'Мультфильм',
         id: '4',
         isChoosen: false,
       },
       {
-        value: "Детектив",
+        value: 'Детектив',
         id: '5',
         isChoosen: false,
       },
       {
-        value: "Драма",
+        value: 'Драма',
         id: '6',
         isChoosen: false,
       },
       {
-        value: "Семейный",
+        value: 'Семейный',
         id: '7',
         isChoosen: false,
       },
     ],
     onChoose: () => {},
-    title: "Жанр",
+    title: 'Жанр',
   },
 };
 
 export const Scrollable: Story = {
   render: () => {
-
     const startYear = 1990;
     const currentYear = new Date().getFullYear();
-    const years: TParameter[] = []
-    for(var i=startYear;i<=currentYear;i++){
+    const years: TParameter[] = [];
+    for (var i = startYear; i <= currentYear; i++) {
       years.push({
         id: i.toString(),
         value: i.toString(),
         isChoosen: false,
       });
-    } 
+    }
     const [params, setParams] = useState(years);
 
     const onChoose = (parametr: TParameter) => {
@@ -98,51 +97,51 @@ export const Scrollable: Story = {
             param.isChoosen = !param.isChoosen;
           }
           return param;
-        })
+        }),
       );
     };
 
-    return <Dropdown params={params} title={"Год"} onChoose={onChoose} isScrollable={true}/>;
+    return <Dropdown params={params} title={'Год'} onChoose={onChoose} isScrollable={true} />;
   },
   args: {
     params: [
       {
-        value: "Фантастика",
+        value: 'Фантастика',
         id: '1',
         isChoosen: false,
       },
       {
-        value: "Боевик",
+        value: 'Боевик',
         id: '2',
         isChoosen: false,
       },
       {
-        value: "Триллер",
+        value: 'Триллер',
         id: '3',
         isChoosen: false,
       },
       {
-        value: "Мультфильм",
+        value: 'Мультфильм',
         id: '4',
         isChoosen: false,
       },
       {
-        value: "Детектив",
+        value: 'Детектив',
         id: '5',
         isChoosen: false,
       },
       {
-        value: "Драма",
+        value: 'Драма',
         id: '6',
         isChoosen: false,
       },
       {
-        value: "Семейный",
+        value: 'Семейный',
         id: '7',
         isChoosen: false,
       },
     ],
     onChoose: () => {},
-    title: "Жанр",
+    title: 'Жанр',
   },
 };

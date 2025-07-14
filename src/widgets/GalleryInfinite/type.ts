@@ -1,9 +1,8 @@
-import type { ReactNode } from "react";
-
+import type { ReactNode } from 'react';
 
 export interface TInfiniteScrollProps {
   dataLength: number;
-  next: ()=> void;
+  next: () => void;
   hasMore: boolean;
   loader: ReactNode;
   endMessage?: ReactNode;

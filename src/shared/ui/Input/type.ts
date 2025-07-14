@@ -8,7 +8,7 @@ export interface InputProps {
   maxLength?: number;
   minLength?: number;
   type?: string;
-  maxValue?: number|string;
-  minValue?: number|string;
+  maxValue?: number | string;
+  minValue?: number | string;
   step?: number;
 }

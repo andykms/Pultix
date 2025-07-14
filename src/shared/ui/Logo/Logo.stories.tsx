@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Logo } from "./Logo";
+import { Logo } from './Logo';
 
 const meta = {
-  title: "Shared/UI/Logo",
+  title: 'Shared/UI/Logo',
   component: Logo,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof Logo>;
 

@@ -1,41 +1,38 @@
-import type { TInfiniteScrollProps } from "../../widgets/GalleryInfinite/type";
-import type { FilmCardProps } from "../../shared/ui/FilmCard/type";
-import type { TFilm } from "../../types/views/RegistrationPage";
+import type { TInfiniteScrollProps } from '../../widgets/GalleryInfinite/type';
+import type { FilmCardProps } from '../../shared/ui/FilmCard/type';
+import type { TFilm } from '../../types/views/RegistrationPage';
 
 export type TRange = {
   id: string;
   value: {
     from: string;
     to: string;
-  }
-}
+  };
+};
 
 export type TValue = {
   id: string;
   value: string;
-}
+};
 
 type TFilterData = {
-  genres: string[],
+  genres: string[];
   maxYear: number;
   minYear: number;
   minRating: number;
   maxRating: number;
-}
+};
 
 type TIds = {
-  yearId: string,
-  ratingId: string,
+  yearId: string;
+  ratingId: string;
   genreId: string;
-}
+};
 
 export interface MoviesPageProps {
   films: FilmCardProps[];
   infiniteScrollProps: TInfiniteScrollProps;
-  filterData: TFilterData,
-  ids: TIds,
-  onSubmitFilters: (
-    values: TValue[],
-    ranges: TRange[],
-  ) => void;
+  filterData: TFilterData;
+  ids: TIds;
+  onSubmitFilters: (values: TValue[], ranges: TRange[]) => void;
 }

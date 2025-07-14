@@ -1,15 +1,15 @@
-import { SearchPage } from "../../pages/Search/SearchPage";
-import { useSelector, useDispatch } from "../../services/store";
-import { useEffect } from "react";
+import { SearchPage } from '../../pages/Search/SearchPage';
+import { useSelector, useDispatch } from '../../services/store';
+import { useEffect } from 'react';
 import {
   clearSearchingFilms,
   getHasMoreSearched,
   getSearchFilms,
-} from "../../features/Film/FilmSlice";
-import { getSearchFilmsThunk } from "../../features/Film/thunk";
-import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
-import { Loader } from "../../shared/ui/Loader/Loader";
+} from '../../features/Film/FilmSlice';
+import { getSearchFilmsThunk } from '../../features/Film/thunk';
+import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Loader } from '../../shared/ui/Loader/Loader';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -22,19 +22,15 @@ export const Search = () => {
 
   const hasMore = useSelector(getHasMoreSearched);
 
-
   useEffect(() => {
     dispatch(clearSearchingFilms());
-    setCurrentQuery(searchParams.get("query"));
+    setCurrentQuery(searchParams.get('query'));
   }, [dispatch, searchParams]);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
-    return ()=>{
-
-    }
-  }, [currentQuery])
+    return () => {};
+  }, [currentQuery]);
 
   const onNext = () => {
     if (currentQuery) dispatch(getSearchFilmsThunk(currentQuery));
@@ -42,7 +38,7 @@ export const Search = () => {
 
   return (
     <SearchPage
-      searchValue={currentQuery ? currentQuery : ""}
+      searchValue={currentQuery ? currentQuery : ''}
       films={films}
       infiniteScrollProps={{
         loader: <Loader></Loader>,

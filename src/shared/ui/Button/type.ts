@@ -1,10 +1,9 @@
 export interface ButtonProps {
-  type: 'primary' | 'secondary' | 'tertiary'|'opacity';
+  type: 'primary' | 'secondary' | 'tertiary' | 'opacity';
   width: string;
   children: React.ReactNode;
   onClick?: () => void;
   style?: React.CSSProperties;
   disabled?: boolean;
-  htmlType?: "button" | "reset" | "submit" | undefined;
+  htmlType?: 'button' | 'reset' | 'submit' | undefined;
 }
-

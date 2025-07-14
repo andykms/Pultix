@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Tabs } from "./Tabs";
+import { Tabs } from './Tabs';
 
 const meta = {
-  title: "Shared/UI/Tabs",
+  title: 'Shared/UI/Tabs',
   component: Tabs,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
 } satisfies Meta<typeof Tabs>;
 
@@ -16,22 +16,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   render: (args) => {
-    return <div style={{width: '80vw'}}><Tabs {...args} /></div>;
+    return (
+      <div style={{ width: '80vw' }}>
+        <Tabs {...args} />
+      </div>
+    );
   },
   args: {
-    activeId: "1",
+    activeId: '1',
     tabs: [
       {
-        id: "1",
-        title: "Жанры",
+        id: '1',
+        title: 'Жанры',
       },
       {
-        id: "2",
-        title: "Описание",
+        id: '2',
+        title: 'Описание',
       },
       {
-        id: "3",
-        title: "Год",
+        id: '3',
+        title: 'Год',
       },
     ],
     onClick: (id) => {},
