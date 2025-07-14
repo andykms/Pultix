@@ -130,6 +130,7 @@ export const MoviesPage: React.FC<MoviesPageProps> = (props: MoviesPageProps) =>
           InfiniteScrollProps={infiniteScrollProps}
         ></GalleryInfinite>
       </div>
+      <ButtonToggleTheme></ButtonToggleTheme>
     </div>
   );
 };
